@@ -1,5 +1,6 @@
 const tailwindcss = require('tailwindcss')
 const cssnano = require('cssnano')({ preset: 'default', })
+const discardComments = require('postcss-discard-comments')
 
 // only needed if you want to purge
 const purgecss = require('@fullhuman/postcss-purgecss')({
@@ -12,11 +13,7 @@ module.exports = {
     plugins: [
         tailwindcss('./tailwind.config.js'),
 
-        purgecss,
-
-        cssnano
-
-        // purge and minify the css only in production
-        // ...(process.env.NODE_ENV === 'production' ? [purgecss, cssnano] : []),
+        // minify the css only in production & discard comments in development
+        ...(process.env.NODE_ENV === 'production' ? [cssnano, purgecss] : [discardComments]),
     ]
 }

@@ -23,19 +23,18 @@
     }
 </script>
 
-<div class="container px-4 sm:px-8 lg:px-24">
+<div class="py-3 text-center text-lg font-bold">Próximamente</div>
 
-    <div class="py-3 text-center text-lg font-bold">Próximamente</div>
+<div class="flex flex-no-wrap lg:flex-wrap lg:justify-center py-4 overflow-y-hidden text-center">
+    
+    {#each Array(5) as item, i}
 
-    <div class="flex flex-no-wrap flex-row overflow-scroll overflow-y-hidden pb-2 xs:pb-4 text-center">
+        <Card isToday={false} dayName={next5DaysNames[i]}/>
 
-        {#each Array(5) as item, i}
+    {/each}
 
-            <Card isToday={false} dayName={next5DaysNames[i]}/>
+    <div class="w-1/12 invisible lg:hidden">.</div>
 
-        {/each}
-
-    </div>
 </div>
 
 <style>
@@ -43,13 +42,11 @@
     .flex::-webkit-scrollbar{
         height: 0.2rem
     }
-
     .flex::-webkit-scrollbar-thumb{
-        background-color: gainsboro
+        background-color: gainsboro;
     }
-
     .flex::-webkit-scrollbar-track{
-        background-color: white
+        background-color: white;
     }
 
 </style>
