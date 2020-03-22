@@ -8,3 +8,10 @@ export const currentWeather = writable({
     humidity: '',
     windSpeed: ''
 })
+
+export const next5DaysWeather = writable({
+    id: 0,
+    temp: 20,
+    temp_max: 30,
+    temp_min: 10
+})

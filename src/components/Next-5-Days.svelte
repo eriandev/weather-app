@@ -1,5 +1,6 @@
 <script>
-    import Card from './Card.svelte'
+    import { currentWeather } from '../store.js'
+    import MiniCard from './Mini-Card.svelte'
 
     const weekDays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
     const day = new Date()
@@ -25,7 +26,7 @@
 
 <div class="py-3 text-center text-lg font-bold">Próximamente</div>
 
-<div class="flex flex-no-wrap lg:flex-wrap justify-between py-4 overflow-y-hidden text-center">
+<div class="flex flex-no-wrap lg:flex-wrap justify-between lg:justify-center py-4 overflow-y-hidden text-center">
 
     <div class="flex-none w-1/5 sm:w-1/3 md:w-2/5 md:-mx-4 invisible lg:hidden">
         Don't see me
@@ -33,7 +34,7 @@
     
     {#each Array(5) as item, i}
 
-        <Card isToday={false} dayName={next5DaysNames[i]}/>
+        <MiniCard dayName={next5DaysNames[i]}/>
 
     {/each}
 
