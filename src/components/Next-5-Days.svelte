@@ -25,7 +25,11 @@
 
 <div class="py-3 text-center text-lg font-bold">Próximamente</div>
 
-<div class="flex flex-no-wrap lg:flex-wrap lg:justify-center py-4 overflow-y-hidden text-center">
+<div class="flex flex-no-wrap lg:flex-wrap justify-between py-4 overflow-y-hidden text-center">
+
+    <div class="flex-none w-1/5 sm:w-1/3 md:w-2/5 md:-mx-4 invisible lg:hidden">
+        Don't see me
+    </div>
     
     {#each Array(5) as item, i}
 
@@ -33,7 +37,9 @@
 
     {/each}
 
-    <div class="w-1/12 invisible lg:hidden">.</div>
+    <div class="flex-none w-1/5 sm:w-1/3 md:w-2/5 md:-mx-4 invisible lg:hidden">
+        Don't see me
+    </div>
 
 </div>
 

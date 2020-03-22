@@ -61,7 +61,7 @@
 
     </div>
 {:else}
-    <div class="bg-teal-600 flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 h-48 mx-3 lg:mx-4 text-white rounded-xl shadow-md first:ml-5">
+    <div class="bg-teal-600 flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 h-48 mx-3 lg:mx-4 text-white rounded-xl shadow-md">
         <div class="py-2">{dayName}</div>
         <img class="h-16 mx-auto" src="./images/broken_clouds.png" alt="Nubes rotas">
         <div class="text-lg">20°</div>
