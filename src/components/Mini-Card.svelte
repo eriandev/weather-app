@@ -1,10 +1,43 @@
 <script>
-    export let dayName, temp, tempMin, tempMax
+    export let updated, id, dayName, temp, tempMin, tempMax
+
+    let title     = '.'
+    let imgToShow = 'unknown'
+    let descToSay = 'clima desconocido'
+    let bgColor   = 'moonlit-asteroid'
+
+    $:  if(updated) {
+
+        let firstDigit = []
+        id.toString().split('').forEach( d => firstDigit.push(d))
+
+        fetch(`https://erianvc.github.io/API/weather-app/data/group${firstDigit[0]}xx.json`)
+            .then( res => res.json())
+            .then( data => {
+
+                data.forEach(the => {
+                    if(the.id === id) {
+                        title = the.title
+                        imgToShow = the.image
+                        descToSay = the.description
+                    }
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
+    $: if(temp !== '-') {
+
+        temp > 35 ? bgColor = 'flare' : null
+        temp > 25 && temp < 36 ? bgColor = 'blooker-20' : null
+        temp > 10 && temp < 26 ? bgColor = 'blue-sky' : null
+        temp < 11 ? bgColor = 'cool-sky' : null
+    }
 </script>
 
-<div class="bg-teal-600 flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 h-48 mx-3 lg:mx-4 text-white rounded-xl shadow-md">
+<div class={`${bgColor} flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 h-48 mx-3 lg:mx-4 text-white rounded-xl shadow-md`}>
     <div class="py-2">{dayName}</div>
-    <img class="h-16 mx-auto" src="./images/broken_clouds.png" alt="Nubes rotas">
+    <img class="h-16 mx-auto" src="./images/{imgToShow}.png" alt={descToSay}>
     <div class="text-lg">{temp !== '-' ? `${temp}°` : temp}</div>
 
     <div class="flex flex-wrap">

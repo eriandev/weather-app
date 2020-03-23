@@ -1,6 +1,6 @@
 {
   "name": "weather-app",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Aplicación que muestra el clima actual en tu región",
   "scripts": {
     "start": "sirv public",

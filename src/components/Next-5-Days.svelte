@@ -24,7 +24,7 @@
     }
 </script>
 
-<div class="py-3 text-center text-lg font-bold">Próximamente</div>
+<div class="py-3 text-center text-lg font-bold">Pronóstico de la semana</div>
 
 <div class="flex flex-no-wrap lg:flex-wrap justify-between lg:justify-center py-4 overflow-y-hidden text-center">
 
@@ -34,7 +34,12 @@
     
     {#each Array(5) as item, i}
 
-        <MiniCard dayName={next5DaysNames[i]} temp={$next5DaysWeather.temp[i]} tempMin={$next5DaysWeather.temp_min[i]} tempMax={$next5DaysWeather.temp_max[i]} />
+        <MiniCard   updated={$next5DaysWeather.updated}
+                    id={$next5DaysWeather.id[i]} 
+                    dayName={next5DaysNames[i]} 
+                    temp={$next5DaysWeather.temp[i]} 
+                    tempMin={$next5DaysWeather.temp_min[i]} 
+                    tempMax={$next5DaysWeather.temp_max[i]} />
 
     {/each}
 

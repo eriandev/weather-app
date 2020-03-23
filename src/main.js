@@ -9,8 +9,7 @@ const currentPositionOptions = {
 
 
 
-//startApp()
-getForecastData()
+startApp()
 
 
 async function startApp() {
@@ -32,8 +31,8 @@ function getPosition() {
 
     async function successGeolocation(position) {
 
-        let weatherInfo = await getWeather(weather, position.coords.latitude, position.coords.longitude)
-        let next5DaysData = await getWeather(forecast, position.coords.latitude, position.coords.longitude)
+        let weatherInfo = await getWeather('weather', position.coords.latitude, position.coords.longitude)
+        let next5DaysData = await getWeather('forecast', position.coords.latitude, position.coords.longitude)
         updateTitleStore(`${weatherInfo.name}, ${weatherInfo.sys.country}`)
         updateCurrentWeatherStore(weatherInfo)
         updateNext5DaysWeatherStore(next5DaysData)
@@ -44,8 +43,10 @@ function getPosition() {
 async function errorGeolocation() {
 
     let latlng = await getIpClient().then( res => res.loc.split(',') )
-    let weatherInfo = await getWeather(latlng[0].trim(), latlng[1].trim())
+    let weatherInfo = await getWeather('weather', latlng[0].trim(), latlng[1].trim())
+    let forecastInfo = await getWeather('forecast', latlng[0].trim(), latlng[1].trim())
     updateTitleStore(`${weatherInfo.name}, ${weatherInfo.sys.country}`)
+    updateNext5DaysWeatherStore(forecastInfo)
     updateCurrentWeatherStore(weatherInfo)
 }
 
@@ -59,11 +60,6 @@ async function getIpClient() {
 
 async function getWeather(mode, lat, lon) {
     return await fetch(`/.netlify/functions/weather?mode=${mode}&lat=${lat}&lon=${lon}`).then(res => res.json())
-}
-
-async function getForecastData() {
-    let response = await fetch('data/forecast.json').then(res => res.json())
-    updateNext5DaysWeatherStore(response)
 }
 
 
@@ -132,17 +128,18 @@ function updateNext5DaysWeatherStore(data){
         }
     })
 
-    let day1 = [getMiddleId(forecast1.ids), getProm(forecast1.temps)]
-    let day2 = [getMiddleId(forecast2.ids), getProm(forecast2.temps)]
-    let day3 = [getMiddleId(forecast3.ids), getProm(forecast3.temps)]
-    let day4 = [getMiddleId(forecast4.ids), getProm(forecast4.temps)]
-    let day5 = [getMiddleId(forecast5.ids), getProm(forecast5.temps)]
+    let day1 = [getMiddleId(forecast1.ids), [ Math.round(Math.min(...forecast1.temps[0])),  getProm(forecast1.temps[1]),  Math.round(Math.max(...forecast1.temps[2]))] ]
+    let day2 = [getMiddleId(forecast2.ids), [ Math.round(Math.min(...forecast2.temps[0])),  getProm(forecast2.temps[1]),  Math.round(Math.max(...forecast2.temps[2]))] ]
+    let day3 = [getMiddleId(forecast3.ids), [ Math.round(Math.min(...forecast3.temps[0])),  getProm(forecast3.temps[1]),  Math.round(Math.max(...forecast3.temps[2]))] ]
+    let day4 = [getMiddleId(forecast4.ids), [ Math.round(Math.min(...forecast4.temps[0])),  getProm(forecast4.temps[1]),  Math.round(Math.max(...forecast4.temps[2]))] ]
+    let day5 = [getMiddleId(forecast5.ids), [ Math.round(Math.min(...forecast5.temps[0])),  getProm(forecast5.temps[1]),  Math.round(Math.max(...forecast5.temps[2]))] ]
 
     let theForecast = {
-        id: [day1[0], day2[0], day3[0], day4[0], day5[0]],
-        temp_max: [day1[1][2], day2[1][2], day3[1][2], day4[1][2], day5[1][2]],
-        temp: [day1[1][1], day2[1][1], day3[1][1], day4[1][1], day5[1][1]],
-        temp_min: [day1[1][0], day2[1][0], day3[1][0], day4[1][0], day5[1][0]]
+        id: [ day1[0], day2[0], day3[0], day4[0], day5[0] ],
+        temp_max: [ day1[1][2], day2[1][2], day3[1][2], day4[1][2], day5[1][2] ],
+        temp: [ day1[1][1], day2[1][1], day3[1][1], day4[1][1], day5[1][1] ],
+        temp_min: [ day1[1][0], day2[1][0], day3[1][0], day4[1][0], day5[1][0] ],
+        updated: true
     }
 
     next5DaysWeather.update(n => n = theForecast)
@@ -155,20 +152,13 @@ function getMiddleId(array) {
 
 function getProm(array) {
 
-    let res = []
-
+    let acu = 0
     for (let i = 0; i < array.length; i++) {
-
-        let aux = 0        
-        array[i].forEach( ele => {
-
-            aux = aux + ele
-        })
-
-        res.push(Math.round(aux/array[i].length))        
+        
+        acu += array[i]        
     }
 
-    return res
+    return Math.round(acu/array.length)
 }
 
 function get5NextDaysDate(){
