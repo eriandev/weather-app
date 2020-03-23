@@ -10,8 +10,8 @@ export const currentWeather = writable({
 })
 
 export const next5DaysWeather = writable({
-    id: 0,
-    temp: 20,
-    temp_max: 30,
-    temp_min: 10
+    id: [0, 0, 0, 0, 0],
+    temp_max: ['-', '-', '-', '-', '-'],
+    temp: ['-', '-', '-', '-', '-'],
+    temp_min: ['-', '-', '-', '-', '-']
 })

@@ -1,26 +1,24 @@
 <script>
-    import { next5DaysWeather } from '../store.js'
-
-    export let dayName
+    export let dayName, temp, tempMin, tempMax
 </script>
 
 <div class="bg-teal-600 flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 h-48 mx-3 lg:mx-4 text-white rounded-xl shadow-md">
     <div class="py-2">{dayName}</div>
     <img class="h-16 mx-auto" src="./images/broken_clouds.png" alt="Nubes rotas">
-    <div class="text-lg">{$next5DaysWeather.temp !== '-' ? `${$next5DaysWeather.temp}°` : $next5DaysWeather.temp}</div>
+    <div class="text-lg">{temp !== '-' ? `${temp}°` : temp}</div>
 
     <div class="flex flex-wrap">
         <div class="w-1/2">
             <div class="w-full">
                 <svg class="h-6 w-6 mx-auto fill-current text-white"><use href="#arrow-down"></use></svg>
             </div>
-            <div class="w-full">{$next5DaysWeather.temp_min !== '-' ? `${$next5DaysWeather.temp_min}°` : $next5DaysWeather.temp_min}</div>
+            <div class="w-full">{tempMin !== '-' ? `${tempMin}°` : tempMin}</div>
         </div>
         <div class="w-1/2">
             <div class="w-full">
                 <svg class="h-6 w-6 mx-auto fill-current text-white"><use href="#arrow-up"></use></svg>
             </div>
-            <div class="w-full">{$next5DaysWeather.temp_max !== '-' ? `${$next5DaysWeather.temp_max}°` : $next5DaysWeather.temp_max}</div>
+            <div class="w-full">{tempMax !== '-' ? `${tempMax}°` : tempMax}</div>
         </div>
     </div>
 </div>
