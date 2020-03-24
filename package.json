@@ -1,7 +1,23 @@
 {
   "name": "weather-app",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Aplicación que muestra el clima actual en tu región",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erianvc/weather-app.git"
+  },
+  "keywords": [
+    "weather",
+    "app",
+    "svelte",
+    "tailwind"
+  ],
+  "author": "Erick Vargas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erianvc/weather-app/issues"
+  },
+  "homepage": "https://github.com/erianvc/weather-app#readme",
   "scripts": {
     "start": "sirv public",
     "autobuild": "rollup -c -w",
