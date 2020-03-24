@@ -22,6 +22,8 @@ module.exports = {
             'full': '9999px',
         },
     },
-    variants: {},
+    variants: {
+        margin: ['responsive', 'first', 'hover', 'focus'],
+    },
     plugins: [],
 }

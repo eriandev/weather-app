@@ -1,5 +1,4 @@
 <script>
-import { currentWeather } from './store.js'
     import Header from './components/Header.svelte'
     import Card from './components/Card.svelte'
     import Next5Days from './components/Next-5-Days.svelte'
@@ -7,7 +6,7 @@ import { currentWeather } from './store.js'
 
 <Header />
 
-<Card isToday={true} dayName={null} />
+<Card />
 
 <Next5Days />
 
