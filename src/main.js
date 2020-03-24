@@ -1,5 +1,5 @@
 import App from './App.svelte'
-import { title, currentWeather, next5DaysWeather } from './store.js';
+import { title, weather, forecast } from './store.js';
 
 const currentPositionOptions = {
     enableHighAccuracy: false, 
@@ -12,14 +12,12 @@ const currentPositionOptions = {
 startApp()
 
 
+
 async function startApp() {
 
     if('geolocation' in navigator) {
-
         getPosition()
-    } else{
-
-        console.warn('No hay geolocalización disponible')
+    } else {
         errorGeolocation()
     }
 }
@@ -31,11 +29,11 @@ function getPosition() {
 
     async function successGeolocation(position) {
 
-        let weatherInfo = await getWeather('weather', position.coords.latitude, position.coords.longitude)
-        let next5DaysData = await getWeather('forecast', position.coords.latitude, position.coords.longitude)
-        updateTitleStore(`${weatherInfo.name}, ${weatherInfo.sys.country}`)
-        updateCurrentWeatherStore(weatherInfo)
-        updateNext5DaysWeatherStore(next5DaysData)
+        let weatherData = await getWeatherClient('weather', position.coords.latitude, position.coords.longitude)
+        let forecastData = await getWeatherClient('forecast', position.coords.latitude, position.coords.longitude)
+        updateTitleStore(`${weatherData.name}, ${weatherData.sys.country}`)
+        updateWeatherStore(weatherData)
+        updateForecastStore(forecastData)
     }
 }
 
@@ -43,22 +41,20 @@ function getPosition() {
 async function errorGeolocation() {
 
     let latlng = await getIpClient().then( res => res.loc.split(',') )
-    let weatherInfo = await getWeather('weather', latlng[0].trim(), latlng[1].trim())
-    let forecastInfo = await getWeather('forecast', latlng[0].trim(), latlng[1].trim())
-    updateTitleStore(`${weatherInfo.name}, ${weatherInfo.sys.country}`)
-    updateNext5DaysWeatherStore(forecastInfo)
-    updateCurrentWeatherStore(weatherInfo)
+    let weatherData = await getWeatherClient('weather', latlng[0].trim(), latlng[1].trim())
+    let forecastData = await getWeatherClient('forecast', latlng[0].trim(), latlng[1].trim())
+    updateTitleStore(`${weatherData.name}, ${weatherData.sys.country}`)
+    updateWeatherStore(weatherData)
+    updateForecastStore(forecastData)
 }
 
 
 async function getIpClient() {
-
-    let response = await fetch('/.netlify/functions/ipclient').then(res => res.json())
-    return response
+    return await fetch('/.netlify/functions/ipclient').then(res => res.json())
 }
 
 
-async function getWeather(mode, lat, lon) {
+async function getWeatherClient(mode, lat, lon) {
     return await fetch(`/.netlify/functions/weather?mode=${mode}&lat=${lat}&lon=${lon}`).then(res => res.json())
 }
 
@@ -68,7 +64,7 @@ function updateTitleStore(newTitle) {
 }
 
 
-function updateCurrentWeatherStore(data) {
+function updateWeatherStore(data) {
 
     let theWather = {
         id: data.weather[0].id,
@@ -77,116 +73,102 @@ function updateCurrentWeatherStore(data) {
         windSpeed: data.wind.speed,
     }
 
-    currentWeather.update(n => n = theWather)
+    weather.update(n => n = theWather)
 }
 
-function updateNext5DaysWeatherStore(data){
 
-    let nextDays = get5NextDaysDate()
+function updateForecastStore(data){
 
-    let forecast1 = { ids: [], temps: [[], [], []] }
-    let forecast2 = { ids: [], temps: [[], [], []] }
-    let forecast3 = { ids: [], temps: [[], [], []] }
-    let forecast4 = { ids: [], temps: [[], [], []] }
-    let forecast5 = { ids: [], temps: [[], [], []] }
+    let info = formatData(data)
+    let newForecast = {
 
-    data.list.forEach(the => {
+        id: [ info[1].id, info[2].id, info[3].id, info[4].id, info[5].id ],
 
-        if(the.dt_txt.includes(nextDays[1])) {
-            forecast1.ids.push(the.weather[0].id)
-            forecast1.temps[0].push(the.main.temp_min)
-            forecast1.temps[1].push(the.main.temp)
-            forecast1.temps[2].push(the.main.temp_max)
-        }
+        temp_max: [ info[1].tempMax, info[2].tempMax, info[3].tempMax, info[4].tempMax, info[5].tempMax ],
 
-        if(the.dt_txt.includes(nextDays[2])) {
-            forecast2.ids.push(the.weather[0].id)
-            forecast2.temps[0].push(the.main.temp_min)
-            forecast2.temps[1].push(the.main.temp)
-            forecast2.temps[2].push(the.main.temp_max)
-        }
+        temp: [ info[1].temp, info[2].temp, info[3].temp, info[4].temp, info[5].temp ],
 
-        if(the.dt_txt.includes(nextDays[3])) {
-            forecast3.ids.push(the.weather[0].id)
-            forecast3.temps[0].push(the.main.temp_min)
-            forecast3.temps[1].push(the.main.temp)
-            forecast3.temps[2].push(the.main.temp_max)
-        }
+        temp_min: [ info[1].tempMin, info[2].tempMin, info[3].tempMin, info[4].tempMin, info[5].tempMin ],
 
-        if(the.dt_txt.includes(nextDays[4])) {
-            forecast4.ids.push(the.weather[0].id)
-            forecast4.temps[0].push(the.main.temp_min)
-            forecast4.temps[1].push(the.main.temp)
-            forecast4.temps[2].push(the.main.temp_max)
-        }
-
-        if(the.dt_txt.includes(nextDays[5])) {
-            forecast5.ids.push(the.weather[0].id)
-            forecast5.temps[0].push(the.main.temp_min)
-            forecast5.temps[1].push(the.main.temp)
-            forecast5.temps[2].push(the.main.temp_max)
-        }
-    })
-
-    let day1 = [getMiddleId(forecast1.ids), [ Math.round(Math.min(...forecast1.temps[0])),  getProm(forecast1.temps[1]),  Math.round(Math.max(...forecast1.temps[2]))] ]
-    let day2 = [getMiddleId(forecast2.ids), [ Math.round(Math.min(...forecast2.temps[0])),  getProm(forecast2.temps[1]),  Math.round(Math.max(...forecast2.temps[2]))] ]
-    let day3 = [getMiddleId(forecast3.ids), [ Math.round(Math.min(...forecast3.temps[0])),  getProm(forecast3.temps[1]),  Math.round(Math.max(...forecast3.temps[2]))] ]
-    let day4 = [getMiddleId(forecast4.ids), [ Math.round(Math.min(...forecast4.temps[0])),  getProm(forecast4.temps[1]),  Math.round(Math.max(...forecast4.temps[2]))] ]
-    let day5 = [getMiddleId(forecast5.ids), [ Math.round(Math.min(...forecast5.temps[0])),  getProm(forecast5.temps[1]),  Math.round(Math.max(...forecast5.temps[2]))] ]
-
-    let theForecast = {
-        id: [ day1[0], day2[0], day3[0], day4[0], day5[0] ],
-        temp_max: [ day1[1][2], day2[1][2], day3[1][2], day4[1][2], day5[1][2] ],
-        temp: [ day1[1][1], day2[1][1], day3[1][1], day4[1][1], day5[1][1] ],
-        temp_min: [ day1[1][0], day2[1][0], day3[1][0], day4[1][0], day5[1][0] ],
         updated: true
     }
 
-    next5DaysWeather.update(n => n = theForecast)
+    forecast.update(n => n = newForecast)
 }
 
-function getMiddleId(array) {
 
-    return array[Math.floor(array.length/2)]
-}
+function formatData(data){
 
-function getProm(array) {
+    let nextDays = getNextDaysDate()
+    let allData = [
 
-    let acu = 0
-    for (let i = 0; i < array.length; i++) {
+        { day: nextDays[1], ids: [], temps: [[], [], []] },
+        { day: nextDays[2], ids: [], temps: [[], [], []] },
+        { day: nextDays[3], ids: [], temps: [[], [], []] },
+        { day: nextDays[4], ids: [], temps: [[], [], []] },
+        { day: nextDays[5], ids: [], temps: [[], [], []] }
+    ]
+
+    data.list.forEach(the => {
+
+        allData.forEach(elem => {
+            
+            if(the.dt_txt.includes(elem.day)) {
+                elem.ids.push(the.weather[0].id)
+                elem.temps[0].push(the.main.temp_min)
+                elem.temps[1].push(the.main.temp)
+                elem.temps[2].push(the.main.temp_max)
+            }
+        })
+    })
+
+    let formatData = [null]
+    for (let i = 0; i < allData.length; i++) {
         
-        acu += array[i]        
+        formatData.push({
+
+            id: getMiddleId(allData[i].ids), 
+            tempMin: Math.round(Math.min(...allData[i].temps[0])),
+            temp: Math.round( getProm(allData[i].temps[1]) ),
+            tempMax: Math.round(Math.max(...allData[i].temps[2]))
+        })
     }
 
-    return Math.round(acu/array.length)
+    return formatData
 }
 
-function get5NextDaysDate(){
 
-    const today = new Date(2020, 2, 22, 12, 0, 0, 0)
-    const day1 = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '00')}-${today.getDate().toString().padStart(2, '00')}`
+function getMiddleId(allIds) {
+    return allIds[Math.floor(allIds.length/2)]
+}
 
-    const secondDay = new Date(today)
-    secondDay.setDate(secondDay.getDate() + 1)
-    const day2 = `${secondDay.getFullYear()}-${(secondDay.getMonth() + 1).toString().padStart(2, '00')}-${secondDay.getDate().toString().padStart(2, '00')}`
 
-    const thirdDay  = new Date(today)
-    thirdDay.setDate(thirdDay.getDate() + 2)
-    const day3 = `${thirdDay.getFullYear()}-${(thirdDay.getMonth() + 1).toString().padStart(2, '00')}-${thirdDay.getDate().toString().padStart(2, '00')}`
+function getProm(allTemps) {
 
-    const fourthDay = new Date(today)
-    fourthDay.setDate(fourthDay.getDate() + 3)
-    const day4 = `${fourthDay.getFullYear()}-${(fourthDay.getMonth() + 1).toString().padStart(2, '00')}-${fourthDay.getDate().toString().padStart(2, '00')}`
+    let sumAllTemps = 0
+    for (let i = 0; i < allTemps.length; i++) {
+        
+        sumAllTemps += allTemps[i]        
+    }
 
-    const fifthDay  = new Date(today)
-    fifthDay.setDate(fifthDay.getDate() + 4)
-    const day5 = `${fifthDay.getFullYear()}-${(fifthDay.getMonth() + 1).toString().padStart(2, '00')}-${fifthDay.getDate().toString().padStart(2, '00')}`
+    return Math.round(sumAllTemps/allTemps.length)
+}
 
-    const sixthDay  = new Date(today)
-    sixthDay.setDate(sixthDay.getDate() + 5)
-    const day6 = `${sixthDay.getFullYear()}-${(sixthDay.getMonth() + 1).toString().padStart(2, '00')}-${sixthDay.getDate().toString().padStart(2, '00')}`
 
-    return [day1, day2, day3, day4, day5, day6]
+function getNextDaysDate(){
+
+    const today     = new Date()
+    let nextDates   = []
+
+    for (let i = 0; i < 6; i++) {
+
+        const newDate = new Date(today)
+        newDate.setDate(newDate.getDate() + i)
+        const dateFormat = `${newDate.getFullYear()}-${(newDate.getMonth() + 1).toString().padStart(2, '00')}-${newDate.getDate().toString().padStart(2, '00')}`
+        nextDates.push(dateFormat)
+    }
+
+    return nextDates
 }
 
 

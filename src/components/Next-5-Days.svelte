@@ -1,5 +1,5 @@
 <script>
-    import { next5DaysWeather } from '../store.js'
+    import { forecast } from '../store.js'
     import MiniCard from './Mini-Card.svelte'
 
     const weekDays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
@@ -34,12 +34,12 @@
     
     {#each Array(5) as item, i}
 
-        <MiniCard   updated={$next5DaysWeather.updated}
-                    id={$next5DaysWeather.id[i]} 
+        <MiniCard   updated={$forecast.updated}
+                    id={$forecast.id[i]} 
                     dayName={next5DaysNames[i]} 
-                    temp={$next5DaysWeather.temp[i]} 
-                    tempMin={$next5DaysWeather.temp_min[i]} 
-                    tempMax={$next5DaysWeather.temp_max[i]} />
+                    temp={$forecast.temp[i]} 
+                    tempMin={$forecast.temp_min[i]} 
+                    tempMax={$forecast.temp_max[i]} />
 
     {/each}
 
