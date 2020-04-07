@@ -24,9 +24,9 @@
     }
 </script>
 
-<div class="py-3 text-center text-lg font-bold">Pronóstico de la semana</div>
+<div class="pt-2 text-center text-lg font-bold">Pronóstico de la semana</div>
 
-<div class="flex flex-no-wrap lg:flex-wrap justify-between lg:justify-center py-4 overflow-y-hidden text-center">
+<div class="flex flex-no-wrap lg:flex-wrap justify-between lg:justify-center pt-4 pb-2 xs:pb-4 overflow-y-hidden text-center">
 
     <div class="flex-none w-1/5 sm:w-1/3 md:w-2/5 md:-mx-4 invisible lg:hidden">
         Don't see me
@@ -48,18 +48,3 @@
     </div>
 
 </div>
-
-<style>
-
-    .flex::-webkit-scrollbar{
-        height: 0.2rem
-    }
-    .flex::-webkit-scrollbar-thumb{
-        background-color: gainsboro;
-    }
-    .flex::-webkit-scrollbar-track{
-        background-color: white;
-    }
-
-</style>
-    
