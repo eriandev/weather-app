@@ -1,6 +1,6 @@
 {
   "name": "weather-app",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "description": "Aplicación que muestra el clima actual en tu región",
   "repository": {
     "type": "git",
