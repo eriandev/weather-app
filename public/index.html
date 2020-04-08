@@ -5,11 +5,30 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
     <title>Weather App</title>
-    <meta name="description" content="Aplicación que muestra el clima actual en tu región">
+    <meta name="description" content="Weather App, donde puedes saber el pronóstico del clima de hoy y de los próximos días">
+    <link rel="icon" type="image/png" href="../images/few_clouds.png">
+    <link rel="manifest" href="./manifest.json" />
 
-	<link rel="icon" type="image/png" href="../images/few_clouds.png">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Weather App" />
+    <meta name="twitter:description" content="Weather App, donde puedes saber el pronóstico del clima de hoy y de los próximos días" />
+    <meta name="twitter:creator" content="@erianvc" />
+    <meta name="twitter:image" content="https://erianvc.github.io/API/weather-app/twitter_card.png" />
+
+    <!-- Open Graph data -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://erianvc-weather-app.netlify.com/" />
+    <meta property="og:site_name" content="Weather App">
+    <meta property="og:title" content="Weather App" />
+    <meta property="og:description" content="Weather App, donde puedes saber el pronóstico del clima de hoy y de los próximos días" />
+    <meta property="og:image" content="https://erianvc.github.io/API/weather-app/open_graph.png" />
+    
+    <script>
+        if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js')
+    </script>
+
 	<link rel="stylesheet" href="global.css">
-	<link rel="stylesheet" href="bundle.css">
 
 	<script defer src="bundle.js"></script>
 </head>

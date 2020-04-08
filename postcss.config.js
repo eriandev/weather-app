@@ -13,7 +13,7 @@ module.exports = {
     plugins: [
         tailwindcss('./tailwind.config.js'),
 
-        // minify the css only in production & discard comments in development
+        // minify and purge the css only in production & discard comments in development
         ...(process.env.NODE_ENV === 'production' ? [cssnano, purgecss] : [discardComments]),
     ]
 }

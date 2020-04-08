@@ -38,7 +38,7 @@
 
 <div class="container max-w-sm w-full py-6 xs:py-12 xl:py-16 px-4">
 
-    <div class="text-center text-gray-800">Hoy</div>
+    <div class="text-center">Hoy</div>
 
     <div class={`${bgColor} flex flex-col text-white rounded-xxl shadow-xl`}>
         <span class="text-5xl font-semibold mx-auto py-2">{$weather.temp}{$weather.temp !== '-' ? '°' : ''}</span>

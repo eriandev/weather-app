@@ -1,6 +1,16 @@
 @tailwind base;
 @tailwind components;
 
+
+body {
+    transition: all 1s ease;
+}
+
+body.dark {
+    background-color: #2D3748;
+    color: white;
+}
+
 .flare {
     background: #f12711;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */

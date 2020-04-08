@@ -9,6 +9,3 @@
 <Card />
 
 <Next5Days />
-
-<style>
-</style>
