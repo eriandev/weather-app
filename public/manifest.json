@@ -5,7 +5,7 @@
 	"display" : "standalone",
 	"start_url" : "https://erianvc-weather-app.netlify.com/",
 	"theme_color" : "#2D3748",
-	"description" : "Aplicación que muestra el clima actual en tu región",
+	"description" : "Weather App, donde puedes saber el pronóstico del clima de hoy y de los próximos días",
 	"orientation" : "any",
 	"background_color" : "#2F80ED",
 	"icons": [
