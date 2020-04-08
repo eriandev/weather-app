@@ -2,6 +2,7 @@
 	"dir" : "ltr",
 	"lang" : "es",
     "name" : "Weather App",
+    "short_name" : "Weather App",
 	"display" : "standalone",
 	"start_url" : "https://erianvc-weather-app.netlify.com/",
 	"theme_color" : "#2D3748",
