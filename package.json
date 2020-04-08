@@ -1,7 +1,7 @@
 {
   "name": "weather-app",
-  "version": "0.7.3",
-  "description": "Aplicación que muestra el clima actual en tu región",
+  "version": "0.8.0",
+  "description": "Weather App, donde puedes saber el pronóstico del clima de hoy y de los próximos días",
   "repository": {
     "type": "git",
     "url": "https://github.com/erianvc/weather-app.git"
