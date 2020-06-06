@@ -1,6 +1,6 @@
 # Weather App
 
-![Vista previa](https://erianvc.github.io/API/weather-app/preview.png)
+![Vista previa](https://erianvc.github.io/api/weather-app/preview.png)
 
 ## Descripción
 

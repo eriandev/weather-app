@@ -4,6 +4,8 @@ bundle.**.map
 
 .env
 
+.vscode
+
 .DS_Store
 
 # Local Netlify folder

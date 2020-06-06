@@ -11,7 +11,7 @@
             let firstDigit = []
             $weather.id.toString().split('').forEach( d => firstDigit.push(d))
 
-            fetch(`https://erianvc.github.io/API/weather-app/data/group${firstDigit[0]}xx.json`)
+            fetch(`https://erianvc.github.io/api/weather-app/group${firstDigit[0]}/`)
                 .then( res => res.json())
                 .then( data => {
 
