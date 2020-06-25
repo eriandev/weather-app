@@ -1,6 +1,7 @@
 /node_modules/
 
-bundle.**.map
+/public/bundle.**
+/public/global.css
 
 .env
 
