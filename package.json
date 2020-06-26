@@ -27,7 +27,7 @@
     "build:tailwind": "cross-env NODE_ENV=production postcss src/tailwind.css -o public/global.css"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.0.6",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
     "cross-env": "^7.0.0",
