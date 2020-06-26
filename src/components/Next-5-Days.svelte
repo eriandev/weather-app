@@ -26,11 +26,7 @@
 
 <div class="pt-2 text-center text-lg font-bold">Pronóstico de la semana</div>
 
-<div class="flex flex-no-wrap lg:flex-wrap justify-between lg:justify-center pt-4 pb-2 xs:pb-4 overflow-y-hidden text-center">
-
-    <div class="flex-none w-1/5 sm:w-1/3 md:w-2/5 md:-mx-4 invisible lg:hidden">
-        Don't see me
-    </div>
+<div class="flex flex-no-wrap lg:flex-wrap justify-between lg:justify-center pt-4 pb-2 xs:pb-4 xs:pl-4 overflow-y-hidden text-center">
     
     {#each Array(5) as item, i}
 
@@ -43,8 +39,6 @@
 
     {/each}
 
-    <div class="flex-none w-1/5 sm:w-1/3 md:w-2/5 md:-mx-4 invisible lg:hidden">
-        Don't see me
-    </div>
+    <div class="flex-none px-2 xs:px-4 invisible lg:hidden"></div>
 
 </div>

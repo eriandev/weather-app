@@ -35,7 +35,7 @@
     }
 </script>
 
-<div class={`${bgColor} flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 h-48 mx-3 lg:mx-4 text-white rounded-xl shadow-md`}>
+<div class={`${bgColor} flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 h-48 ml-4 lg:mx-4 text-white rounded-xl shadow-md`}>
     <div class="py-2">{dayName}</div>
     <img class="h-16 mx-auto" src="./images/{imgToShow}.png" alt={descToSay}>
     <div class="text-lg">{temp !== '-' ? `${temp}°` : temp}</div>
