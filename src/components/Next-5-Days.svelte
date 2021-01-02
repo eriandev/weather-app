@@ -24,9 +24,9 @@
     }
 </script>
 
-<div class="pt-2 text-center text-lg font-bold">Pronóstico de la semana</div>
+<h3>Pronóstico de la semana</h3>
 
-<div class="flex flex-no-wrap lg:flex-wrap justify-between lg:justify-center pt-4 pb-2 xs:pb-4 xs:pl-4 overflow-y-hidden text-center">
+<article>
     
     {#each Array(5) as item, i}
 
@@ -39,6 +39,20 @@
 
     {/each}
 
-    <div class="flex-none px-2 xs:px-4 invisible lg:hidden"></div>
+    <aside></aside>
 
-</div>
+</article>
+
+<style>
+    h3 {
+        @apply pt-2 text-lg font-bold text-center;
+    }
+
+    article {
+        @apply flex justify-between pt-4 pb-2 overflow-y-hidden text-center flex-nowrap lg:flex-wrap lg:justify-center xs:pb-4 xs:pl-4;
+    }
+
+    aside {
+        @apply flex-none invisible px-2 xs:px-4 lg:hidden;
+    }
+</style>

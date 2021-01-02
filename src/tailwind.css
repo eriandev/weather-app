@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 
-
 body {
     transition: all 1s ease;
 }
@@ -12,15 +11,15 @@ body.dark {
 }
 
 .flare {
-    background: #f12711;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #f5af19, #f12711);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #f5af19, #f12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #F12711;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #F5AF19, #F12711);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #F5AF19, #F12711); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .blooker-20{
-    background: #e65c00;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #F9D423, #e65c00);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #F9D423, #e65c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #E65C00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #F9D423, #E65C00);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #F9D423, #E65C00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .blue-sky {
@@ -40,5 +39,3 @@ body.dark {
     background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
-@tailwind utilities;

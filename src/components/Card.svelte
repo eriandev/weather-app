@@ -36,24 +36,58 @@
 
 </script>
 
-<div class="container max-w-sm w-full py-6 xs:py-12 xl:py-16 px-4">
+<section>
 
-    <div class="text-center">Hoy</div>
+    <span class="today">Hoy</span>
 
-    <div class={`${bgColor} flex flex-col text-white rounded-xxl shadow-xl`}>
-        <span class="text-5xl font-semibold mx-auto py-2">{$weather.temp}{$weather.temp !== '-' ? '°' : ''}</span>
-        <span class="mx-auto">{title}</span>
-        <div class="flex flex-wrap">
-            <div class="w-1/2 flex flex-col text-center pt-8 font-thin">
+    <article class={bgColor}>
+        <span class="temp">{$weather.temp}{$weather.temp !== '-' ? '°' : ''}</span>
+        <span class="title">{title}</span>
+        <div class="content">
+            <div class="more-info">
                 {#if $weather.humidity !== '' && $weather.windSpeed !== ''}
                     <span class="pt-2">Humedad de {$weather.humidity}%</span>
                     <span class="pt-2">Vientos de {$weather.windSpeed}km/hr</span>
                 {/if}
             </div>
-            <div class="w-1/2">
-                <img src={`./images/${imgToShow}.png`} alt={descToSay}>
+            <div class="image">
+                <img src="./images/{imgToShow}.png" alt={descToSay}>
             </div>
         </div>
-    </div>
+    </article>
 
-</div>
+</section>
+
+<style>
+    section {
+        @apply container w-full max-w-sm px-4 py-6 xs:py-12 xl:py-16;
+    }
+
+    .today {
+        @apply block text-center;
+    }
+
+    article {
+        @apply flex flex-col text-white shadow-xl rounded-2xl;
+    }
+
+    .temp {
+        @apply py-2 mx-auto text-5xl font-semibold;
+    }
+
+    .title {
+        @apply mx-auto;
+    }
+
+    .content {
+        @apply flex flex-wrap;
+    }
+
+    .more-info {
+        @apply flex flex-col w-1/2 pt-8 font-thin text-center;
+    }
+
+    .image {
+        @apply w-1/2;
+    }
+</style>
