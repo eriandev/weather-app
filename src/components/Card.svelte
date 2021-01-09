@@ -46,8 +46,8 @@
         <div class="content">
             <div class="more-info">
                 {#if $weather.humidity !== '' && $weather.windSpeed !== ''}
-                    <span class="pt-2">Humedad de {$weather.humidity}%</span>
-                    <span class="pt-2">Vientos de {$weather.windSpeed}km/hr</span>
+                    <span class="metadata">Humedad de {$weather.humidity}%</span>
+                    <span class="metadata">Vientos de {$weather.windSpeed}km/hr</span>
                 {/if}
             </div>
             <div class="image">
@@ -72,7 +72,7 @@
     }
 
     .temp {
-        @apply py-2 mx-auto text-5xl font-semibold;
+        @apply py-4 mx-auto text-5xl font-semibold;
     }
 
     .title {
@@ -85,6 +85,10 @@
 
     .more-info {
         @apply flex flex-col w-1/2 pt-8 font-thin text-center;
+    }
+
+    .metadata {
+        @apply pl-4 text-left;
     }
 
     .image {
