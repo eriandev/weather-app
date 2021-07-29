@@ -5,8 +5,6 @@ self.addEventListener('install', e => {
             return cache.addAll([
                 './',
                 './index.html',
-                './bundle.js',
-                './global.css',
                 './images/broken_clouds.png',
                 './images/clear_day.png',
                 './images/cloudy_weather.png',

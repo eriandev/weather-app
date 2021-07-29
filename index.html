@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <title>Weather App</title>
     <meta name="description" content="Weather App, donde puedes saber el pronóstico del clima de hoy y de los próximos días">
@@ -27,18 +27,11 @@
     <meta property="og:image" content="https://erianvc.github.io/API/weather-app/open_graph.png" />
     
     <script>
-        if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js')
+      if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js')
     </script>
-
-    <link rel="preload" href="global.css" as="style">
-    <link rel="stylesheet" href="global.css">
-
-    <link rel="preload" href="bundle.css" as="style">
-    <link rel="stylesheet" href="bundle.css">
-
-	<script defer src="bundle.js"></script>
-</head>
-<body>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
     
-</body>
+  </body>
 </html>
