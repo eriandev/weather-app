@@ -8,17 +8,17 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.22.0"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "1.0.0-next.15",
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.26",
     "@types/tailwindcss": "^2.2.1",
     "dotenv": "^10.0.0",
-    "postcss": "^8.3.6",
+    "postcss": "^8.3.9",
     "postcss-preset-env": "^6.7.0",
-    "svelte": "^3.41.0",
-    "svelte-preprocess": "^4.7.4",
-    "tailwindcss": "^2.2.7",
+    "svelte": "^3.43.1",
+    "svelte-preprocess": "^4.9.8",
+    "tailwindcss": "^2.2.16",
     "vite": "^2.4.4"
   }
 }
