@@ -1,17 +1,9 @@
-# Weather App
-
-![Vista previa](https://erianvc.github.io/api/weather-app/preview.png)
-
-## Descripción
-
-Web app que pronostica el clima del día actual y de los siguientes 5 días.
-
-## Librerías y Dependencias
-
-- [Svelte](https://svelte.dev/): framework para el desarrollo de interfaces de usuario.
-- [Tailwind](https://tailwindcss.com/): framework de utilidades para CSS.
-- [Axios](https://github.com/axios/axios): cliente HTTP basado en promesas.
-
-## Créditos
-
-Esta app fue inspirada en [Weather App](https://www.uplabs.com/posts/weather-app-7e99c840-f784-42ca-ad24-56192fc04fa7), una app para Android creada por [Behrouz Khezry](https://www.uplabs.com/bkhezry).
+<h1 align="center">Weather App</h1>
+<div align="center">
+  <a target="_blank" href="https://svelte.dev/">
+    <img title="Vue" alt="Vue badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Ferianvc.github.io%2Fapi%2Fweather-app%2Fbadges%2Fsvelte%2F" />
+  </a>
+  <a target="_blank" href="https://tailwindcss.com/">
+    <img title="TailwindCSS" alt="TailwindCSS badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Ferianvc.github.io%2Fapi%2Fweather-app%2Fbadges%2Ftailwindcss%2F" />
+  </a>
+</div>

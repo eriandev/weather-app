@@ -1,52 +1,27 @@
 {
   "name": "weather-app",
-  "version": "0.8.4",
-  "description": "Weather App, donde puedes saber el pronóstico del clima de hoy y de los próximos días",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/erianvc/weather-app.git"
-  },
-  "keywords": [
-    "weather",
-    "app",
-    "svelte",
-    "tailwindcss"
-  ],
-  "author": "Erick Vargas",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/erianvc/weather-app/issues"
-  },
-  "homepage": "https://github.com/erianvc/weather-app#readme",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
   "scripts": {
-    "start": "sirv public",
-    "autobuild": "rollup -c -w",
-    "dev": "run-p watch:tailwind autobuild",
-    "build": "npm run build:tailwind && rollup -c",
-    "watch:tailwind": "postcss src/tailwind.css -o public/global.css -w",
-    "build:tailwind": "cross-env NODE_ENV=production postcss src/tailwind.css -o public/global.css"
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "prepare": "svelte-kit sync",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview",
+    "prelint": "svelte-check --tsconfig ./jsconfig.json",
+    "lint": "eslint --fix src/**/*.{js,svelte}",
+    "test": "playwright test"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.1",
-    "cross-env": "^7.0.3",
-    "cssnano": "^4.1.10",
-    "dotenv": "^8.2.0",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.2.4",
-    "postcss-cli": "^8.3.1",
-    "postcss-preset-env": "^6.7.0",
-    "rollup": "^2.35.1",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "sirv-cli": "^1.0.10",
-    "svelte": "^3.31.0",
-    "svelte-preprocess": "^4.6.1",
-    "tailwindcss": "^2.0.2"
-  },
-  "dependencies": {
-    "axios": "^0.21.1"
+    "@playwright/test": "1.22.2",
+    "@sveltejs/adapter-auto": "1.0.0-next.43",
+    "@sveltejs/kit": "1.0.0-next.338",
+    "eslint": "8.16.0",
+    "eslint-plugin-svelte3": "4.0.0",
+    "svelte": "3.48.0",
+    "svelte-check": "2.7.1",
+    "svelte-preprocess": "4.10.6",
+    "tailwindcss": "3.0.24"
   }
 }
