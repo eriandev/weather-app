@@ -2,6 +2,15 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: ['./src/**/*.{html,js,svelte}'],
+  safelist: [
+    'text-wind',
+    'text-rain',
+    'text-snow',
+    'text-sunny',
+    'text-cloud',
+    'text-clear',
+    'text-thunderstorm',
+  ],
   darkMode: 'class',
   theme: {
     screens: {
@@ -15,12 +24,13 @@ module.exports = {
     },
 
     colors: {
-      blue: '#27B1FF',
-      orange: '#FF8E27',
-      violet: '#5C4EB1',
-      purple: '#BF8EDD',
-      'grey-blue': '#8EC1DD',
-      'grey-blue-dark': '#4E8DB1',
+      wind: '#27B1FF',
+      rain: '#4E8DB1',
+      snow: '#8EC1DD',
+      sunny: '#FF8E27',
+      cloud: '#8EC1DD',
+      clear: '#FF8E27',
+      thunderstorm: '#BF8EDD',
 
       gray: {
         50: '#F9FAFB',

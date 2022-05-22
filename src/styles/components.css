@@ -27,4 +27,19 @@
       animation: float 6s ease-in-out infinite;
     }
   }
+
+  .temp {
+    @apply font-extrabold;
+
+    & h2 {
+      @apply text-[144px] leading-[196px] bg-clip-text;
+      background: linear-gradient(180deg, #111827 0%, #6B7280 100%);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+    }
+
+    & span {
+      @apply text-2xl capitalize;
+    }
+  }
 }
