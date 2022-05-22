@@ -8,6 +8,13 @@
   }
 
   body {
-    @apply min-h-screen font-manrope;
+    @apply grid min-h-screen place-items-center font-manrope sm:py-14;
+  }
+}
+
+@layer components {
+  .container {
+    @apply block relative h-full border-8 p-10 pt-14 sm:h-auto sm:w-[420px] sm:aspect-[9/16] sm:rounded-[42px];
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
   }
 }
