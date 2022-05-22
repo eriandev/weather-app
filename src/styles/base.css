@@ -1,0 +1,14 @@
+@layer base {
+  :root {
+    font-size: 16px;
+  }
+
+  body {
+    @apply grid min-h-screen place-items-center font-manrope sm:py-14;
+  }
+
+  svg,
+  input {
+    @apply outline-none;
+  }
+}

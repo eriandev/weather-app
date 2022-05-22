@@ -1,20 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@layer base {
-  :root {
-    font-size: 16px;
-  }
-
-  body {
-    @apply grid min-h-screen place-items-center font-manrope sm:py-14;
-  }
-}
-
-@layer components {
-  .container {
-    @apply block relative h-full border-8 p-10 pt-14 sm:h-auto sm:w-[420px] sm:aspect-[9/16] sm:rounded-[42px];
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
-  }
-}
+@import './styles/base.css';
+@import './styles/components.css';
+@import './styles/utilities.css';

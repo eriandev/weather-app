@@ -13,4 +13,4 @@
   }
 </script>
 
-<InlineSVG class="outline-none" src="icons/{name}.svg" {...sizing} {...$$restProps} on:click />
+<InlineSVG src="icons/{name}.svg" {...sizing} {...$$restProps} on:click />

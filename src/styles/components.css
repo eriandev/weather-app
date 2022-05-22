@@ -1,0 +1,30 @@
+@layer components {
+  .container {
+    @apply block relative h-full border-8 p-10 pt-14 sm:h-auto sm:w-[420px] sm:aspect-[9/16] sm:rounded-[42px];
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    @apply grid grid-cols-[auto_fit-content(100%)] items-center;
+
+    & section {
+      @apply grid gap-2;
+
+      & span {
+        @apply text-lg text-gray-500;
+      }
+
+      & h1 {
+        @apply text-5xl font-extrabold;
+      }
+    }
+  }
+
+  .image {
+    @apply filter drop-shadow-2xl;
+
+    & .animated {
+      animation: float 6s ease-in-out infinite;
+    }
+  }
+}
