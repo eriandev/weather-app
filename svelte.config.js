@@ -13,7 +13,7 @@ const config = {
       resolve: {
         alias: {
           '@': path.resolve(dirname, './src'),
-          'test': path.resolve(dirname, './test'),
+          'test': path.resolve(dirname, './tests'),
         }
       }
     }
