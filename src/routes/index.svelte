@@ -5,11 +5,11 @@
   import Picture from '@/components/Picture.svelte'
   import Temperature from '@/components/Temperature.svelte'
 
-  const [_, update] = useCurrentWeather()
+  const [weather, update] = useCurrentWeather()
 
   onMount(() => update())
 </script>
 
-<Header />
+<Header title={$weather.locationName} date={$weather.locationDate} />
 <Picture animated class="mt-12" name="day-sun" alt="Day Sun" />
-<Temperature />
+<Temperature tempDegrees={$weather.tempDegrees} tempCondition={$weather.tempCondition} />

@@ -19,7 +19,7 @@ export const AVAIBLE_ENDPOINTS = ['current', 'forecast']
 export const DEFAULT_CURRENT_STORE = {
   failed: false,
   loading: true,
-  tempDegress: 0,
+  tempDegrees: 0,
   locationDate: '',
   locationName: '',
   tempCondition: '',
@@ -29,7 +29,7 @@ export const DEFAULT_CURRENT_STORE = {
  * @typedef {object} CurrentWeatherStore
  * @prop {string} locationName — Location name
  * @prop {string} locationDate — Local date and time
- * @prop {number} tempDegress — Temperature in celsius
+ * @prop {number} tempDegrees — Temperature in celsius
  * @prop {string} tempCondition — Weather condition text
  * @prop {boolean} failed — Failed status
  * @prop {boolean} loading — Loading status

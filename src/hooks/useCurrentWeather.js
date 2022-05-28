@@ -34,7 +34,7 @@ export function useCurrentWeather() {
       set({
         failed: false,
         loading: false,
-        tempDegress: current.temp_c,
+        tempDegrees: current.temp_c,
         locationName: location.name,
         locationDate: location.localtime,
         tempCondition: current.condition.text,

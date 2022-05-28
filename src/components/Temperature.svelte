@@ -1,10 +1,11 @@
 <script>
-  import { useCurrentWeather } from '@/hooks'
-
-  const [currentWeather] = useCurrentWeather()
+  /** @type {string} */
+  export let tempCondition
+  /** @type {number} */
+  export let tempDegrees
 </script>
 
 <section class="temp">
-  <h2>{$currentWeather.tempDegress}°</h2>
-  <span class="text-{$currentWeather.tempCondition}">{$currentWeather.tempCondition}</span>
+  <h2>{tempDegrees}°</h2>
+  <span class="text-{tempCondition}">{tempCondition}</span>
 </section>
