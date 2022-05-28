@@ -1,14 +1,17 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import preprocess from 'svelte-preprocess'
-import adapter from '@sveltejs/adapter-auto'
+import vercel from '@sveltejs/adapter-vercel'
 
 const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url))
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: adapter(),
+    adapter: vercel(),
+    prerender: {
+      default: true,
+    },
     vite: {
       resolve: {
         alias: {

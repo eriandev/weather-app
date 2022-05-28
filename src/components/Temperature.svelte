@@ -1,16 +1,11 @@
 <script>
-  /**
-   * @typedef Temperature
-   * @type {object}
-   * @property {string} text - forecast weather conditions.
-   * @property {number} number - temperature in Celsius or Fahrenheit.
-   */
-
-  /** @type {Temperature} */
-  export let temp
+  /** @type {string} */
+  export let tempCondition
+  /** @type {number} */
+  export let tempDegrees
 </script>
 
 <section class="temp">
-  <h2>{temp.number}°</h2>
-  <span class="text-{temp.text}">{temp.text}</span>
+  <h2>{tempDegrees}°</h2>
+  <span class="text-{tempCondition}">{tempCondition}</span>
 </section>
