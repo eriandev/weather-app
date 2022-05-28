@@ -1,7 +1,7 @@
 <script>
   import { useCurrentWeather } from '@/hooks'
 
-  const [_, currentWeather] = useCurrentWeather()
+  const [currentWeather] = useCurrentWeather()
 </script>
 
 <section class="temp">

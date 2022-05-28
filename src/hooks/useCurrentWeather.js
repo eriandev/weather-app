@@ -53,5 +53,5 @@ export function useCurrentWeather() {
   }
 
   // @ts-ignore
-  return [updateStore, {subscribe}]
+  return [{subscribe}, updateStore]
 }

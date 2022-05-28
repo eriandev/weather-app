@@ -8,14 +8,25 @@ module.exports = {
   },
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 'latest'
+    ecmaVersion: 'latest',
   },
   extends: ['eslint:recommended'],
   plugins: ['svelte3'],
+  rules: {
+    'no-unused-vars': [
+      'warn',{ destructuredArrayIgnorePattern: '^_$' }
+    ],
+  },
   overrides: [
     {
-      files: ['*.svelte'],
-      processor: 'svelte3/svelte3'
-    }
+      files: ['**/*.svelte'],
+      processor: 'svelte3/svelte3',
+    },
+    {
+      files: ['**/*.spec.js'],
+      env: {
+        jest: true,
+      },
+    },
   ],
 }

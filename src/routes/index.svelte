@@ -5,7 +5,7 @@
   import Picture from '@/components/Picture.svelte'
   import Temperature from '@/components/Temperature.svelte'
 
-  const [update] = useCurrentWeather()
+  const [_, update] = useCurrentWeather()
 
   onMount(() => update())
 </script>

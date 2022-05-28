@@ -2,7 +2,7 @@ export * from './useCurrentWeather.js'
 
 /**
  * @template T
- * @typedef {function(): [UpdateStore, Subscribe<T>]} UseWeather
+ * @typedef {function(): [Subscribe<T>, UpdateStore]} UseWeather
 */
 
 /**

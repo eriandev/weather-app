@@ -2,7 +2,7 @@
   import { useCurrentWeather } from '@/hooks'
   import Icon from '@/components/Icon.svelte'
 
-  const [_, currentWeather] = useCurrentWeather()
+  const [currentWeather] = useCurrentWeather()
 </script>
 
 <header class="header">
