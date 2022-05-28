@@ -1,16 +1,14 @@
 <script>
+  import { useCurrentWeather } from '@/hooks'
   import Icon from '@/components/Icon.svelte'
 
-  /** @type {string} */
-  export let title
-  /** @type {string} */
-  export let date
+  const [_, currentWeather] = useCurrentWeather()
 </script>
 
 <header class="header">
   <section>
-    <span>{date}</span>
-    <h1>{title}</h1>
+    <span>{$currentWeather.locationDate}</span>
+    <h1>{$currentWeather.locationName}</h1>
   </section>
 
   <Icon name="location" color="#4B5563" />

@@ -1,16 +1,10 @@
 <script>
-  /**
-   * @typedef Temperature
-   * @type {object}
-   * @property {string} text - forecast weather conditions.
-   * @property {number} number - temperature in Celsius or Fahrenheit.
-   */
+  import { useCurrentWeather } from '@/hooks'
 
-  /** @type {Temperature} */
-  export let temp
+  const [_, currentWeather] = useCurrentWeather()
 </script>
 
 <section class="temp">
-  <h2>{temp.number}°</h2>
-  <span class="text-{temp.text}">{temp.text}</span>
+  <h2>{$currentWeather.tempDegress}°</h2>
+  <span class="text-{$currentWeather.tempCondition}">{$currentWeather.tempCondition}</span>
 </section>
