@@ -10,9 +10,10 @@ export const RAPIAPI_REQUEST_OPTIONS = {
   }
 }
 
+
+
+export const OWN_API_URL = '/api/weather/'
 export const AVAIBLE_ENDPOINTS = ['current', 'forecast']
-
-
 
 /** @type {CurrentWeatherStore} */
 export const DEFAULT_CURRENT_STORE = {

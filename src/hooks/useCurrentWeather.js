@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store'
+import { getCurrentWeather } from '@/services'
 import { DEFAULT_CURRENT_STORE } from '@/shared/constants'
 
 /**
@@ -13,13 +14,10 @@ export function useCurrentWeather() {
    * @see https://www.weatherapi.com/docs/#intro-request
   */
   const updateStore = async (query) => {
-    const queryParam = query ? `?q=${query}` : ''
     update(store => ({ ...store, loading: true }))
 
     try {
-      const response = await fetch(`/api/weather/current${queryParam}`)
-      /** @type {import('@/hooks').GetWeatherResponse} */
-      const { ok, data, error } = await response.json()
+      const { ok, data, error } = await getCurrentWeather(query)
 
       if(!ok) {
         update(store => ({
