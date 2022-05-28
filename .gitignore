@@ -29,6 +29,7 @@ speed-measure-plugin*.json
 /build
 /package
 /.svelte-kit
+/.vercel_build_output
 
 # misc
 .env
