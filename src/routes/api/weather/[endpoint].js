@@ -1,5 +1,4 @@
-const { VITE_RAPIAPI_HOST, VITE_RAPIAPI_KEY } = import.meta.env
-const AVAIBLE_ENDPOINTS = ['current', 'forecast']
+import { AVAIBLE_ENDPOINTS, RAPIAPI_REQUEST_OPTIONS, RAPIAPI_URL } from '@/shared/constants'
 
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
@@ -9,13 +8,6 @@ export async function get(event) {
   const { clientAddress, params, url: { searchParams } } = event
   const query = searchParams.get('q') ?? clientAddress
   const { endpoint } = params
-  const requestOptions = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Host': VITE_RAPIAPI_HOST,
-      'X-RapidAPI-Key': VITE_RAPIAPI_KEY
-    }
-  }
 
   if(!AVAIBLE_ENDPOINTS.includes(endpoint)) {
     return {
@@ -32,7 +24,7 @@ export async function get(event) {
   }
 
   try {
-    const response = await fetch(`https://${VITE_RAPIAPI_HOST}/${endpoint}.json?q=${query}`, requestOptions)
+    const response = await fetch(`${RAPIAPI_URL}/${endpoint}.json?q=${query}`, RAPIAPI_REQUEST_OPTIONS)
     /** @type {WeatherData & ErrorResponse} */
     const data = await response.json()
 
@@ -60,7 +52,7 @@ export async function get(event) {
         ok: false,
         error: {
           code: 0,
-          message: 'API request failed',
+          message: 'Request failed',
         }
       }
     }
@@ -210,16 +202,17 @@ export async function get(event) {
  * @typedef ErrorResponse
  * @type {object}
  * @prop {object} error
- * @prop {number} error.message — Error description
+ * @prop {string} error.message — Error description
  * @prop {number} error.code
- * | HTTP Status Code 	| Error code 	| Description                                 	|
- * |------------------	|------------	|---------------------------------------------	|
- * | 401              	| 1002       	| API key not provided.                       	|
- * | 400              	| 1003       	| Parameter 'q' not provided.                 	|
- * | 400              	| 1005       	| API request url is invalid                  	|
- * | 400              	| 1006       	| No location found matching parameter 'q'    	|
- * | 401              	| 2006       	| API key provided is invalid                 	|
- * | 403              	| 2007       	| API key has exceeded calls per month quota. 	|
- * | 403              	| 2008       	| API key has been disabled.                  	|
- * | 400              	| 9999       	| Internal application error.                 	|
+ * | HTTP Status Code 	| Error code 	| Description                                 |
+ * |------------------	|------------	|---------------------------------------------|
+ * | 400              	| 0         	| Request failed                              |
+ * | 401              	| 1002       	| API key not provided                        |
+ * | 400              	| 1003       	| Parameter 'q' not provided                  |
+ * | 400              	| 1005       	| API request url is invalid                  |
+ * | 400              	| 1006       	| No location found matching parameter 'q'    |
+ * | 401              	| 2006       	| API key provided is invalid                 |
+ * | 403              	| 2007       	| API key has exceeded calls per month quota  |
+ * | 403              	| 2008       	| API key has been disabled                   |
+ * | 400              	| 9999       	| Internal application error                  |
 */
