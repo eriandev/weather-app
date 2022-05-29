@@ -7,7 +7,7 @@ module.exports = {
     'text-rain',
     'text-snow',
     'text-sunny',
-    'text-cloud',
+    'text-clouds',
     'text-clear',
     'text-thunderstorm',
   ],
@@ -28,8 +28,8 @@ module.exports = {
       rain: '#4E8DB1',
       snow: '#8EC1DD',
       sunny: '#FF8E27',
-      cloud: '#8EC1DD',
       clear: '#FF8E27',
+      clouds: '#8EC1DD',
       thunderstorm: '#BF8EDD',
 
       gray: {

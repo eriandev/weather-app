@@ -11,5 +11,5 @@
 </script>
 
 <Header title={$weather.locationName} date={$weather.locationDate} />
-<Picture animated class="mt-12" name="day-clear" alt="Day Clear" />
+<Picture animated class="mt-12" name={$weather.tempImage} />
 <Temperature tempDegrees={$weather.tempDegrees} tempCondition={$weather.tempCondition} />

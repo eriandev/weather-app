@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store'
 import { getCurrentWeather } from '@/services'
+import { getConditionByCode } from '@/shared/functions'
 import { DEFAULT_CURRENT_STORE } from '@/shared/constants'
 
 /**
@@ -31,13 +32,19 @@ export function useCurrentWeather() {
       }
 
       const { current, location } = data
+      const isDay = !!current.is_day
+      const condition = getConditionByCode(current.condition.code)
+
       set({
+        isDay,
         failed: false,
         loading: false,
-        tempDegrees: current.temp_c,
+        tempCondition: condition,
         locationName: location.name,
         locationDate: location.localtime,
-        tempCondition: current.condition.text,
+        tempText: current.condition.text,
+        tempDegrees: Math.floor(current.temp_c),
+        tempImage: `${isDay ? 'day' : 'night'}-${condition}`,
       })
 
     } catch (error) {
