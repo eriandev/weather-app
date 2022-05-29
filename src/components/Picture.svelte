@@ -7,8 +7,10 @@
   export let animated = false
 </script>
 
-<picture class="image">
-  <source srcset="{BASE_URL}images/webp/{name}.webp" type="image/webp" />
-  <source srcset="{BASE_URL}images/png/{name}.png" type="image/png" /> 
-  <img class:animated src="{BASE_URL}images/png/{name}.png" alt={name} {...$$restProps} on:click />
-</picture>
+{#if name}
+  <picture class="image">
+    <source srcset="{BASE_URL}images/webp/{name}.webp" type="image/webp" />
+    <source srcset="{BASE_URL}images/png/{name}.png" type="image/png" /> 
+    <img class:animated src="{BASE_URL}images/png/{name}.png" alt={name} {...$$restProps} on:click />
+  </picture>
+{/if}

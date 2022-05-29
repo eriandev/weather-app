@@ -4,7 +4,7 @@
   }
 
   body {
-    @apply grid min-h-screen place-items-center bg-gray-100 bg-[url('icons/bullseye.svg')] bg-center bg-cover font-manrope sm:py-4;
+    @apply grid min-h-screen place-items-center bg-gray-100 bg-[url('/icons/bullseye.svg')] bg-center bg-cover font-manrope sm:py-4;
   }
 
   svg,
