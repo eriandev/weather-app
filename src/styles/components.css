@@ -1,7 +1,13 @@
 @layer components {
   .container {
-    @apply block relative h-full border-8 p-10 pt-14 sm:h-auto sm:w-[420px] sm:aspect-[9/16] sm:rounded-[42px];
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    @apply block relative h-full p-6 border-8 border-white sm:p-10 sm:pt-14 sm:h-auto sm:w-[420px] sm:aspect-[9/16] sm:rounded-[42px];
+    @apply bg-gradient-to-t from-white via-white to-gray-50;
+  }
+
+  .container::after {
+    @apply content-none sm:content-[''] sm:h-[176px] sm:w-[176px] sm:rounded-full sm:absolute sm:-top-[80px] sm:-left-[88px] sm:-z-[1];
+    background: rgb(255,177,51);
+    background: radial-gradient(circle, rgba(255,177,51,1) 0%, rgba(255,177,51,1) 50%, rgba(255,142,39,1) 100%);
   }
 
   .header {
@@ -21,7 +27,7 @@
   }
 
   .image {
-    @apply filter drop-shadow-2xl;
+    @apply filter drop-shadow-[0_25px_25px_rgb(251,198,43,0.3)];
 
     & .animated {
       animation: float 6s ease-in-out infinite;
