@@ -2,7 +2,7 @@
   .container {
     @apply block relative h-full p-6 border-8 border-gray-50 sm:p-10 sm:pt-14 sm:h-auto sm:w-[420px] sm:aspect-[9/16] sm:rounded-[42px];
     @apply bg-gradient-to-t from-white via-gray-50 to-[rgb(243,244,246,0.95)];
-    @apply dark:from-[rgb(17,24,39,0.75)] via-gray-800 to-gray-900 dark:border-gray-800;
+    @apply dark:from-[rgb(17,24,39,0.75)] dark:via-gray-800 dark:to-gray-900 dark:border-gray-800;
   }
 
   .container::after {
