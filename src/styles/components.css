@@ -1,13 +1,20 @@
 @layer components {
   .container {
-    @apply block relative h-full p-6 border-8 border-white sm:p-10 sm:pt-14 sm:h-auto sm:w-[420px] sm:aspect-[9/16] sm:rounded-[42px];
-    @apply bg-gradient-to-t from-white via-white to-gray-50;
+    @apply block relative h-full p-6 border-8 border-gray-50 dark:border-gray-800 sm:p-10 sm:pt-14 sm:h-auto sm:w-[420px] sm:aspect-[9/16] sm:rounded-[42px];
+    @apply bg-gradient-to-t from-white via-gray-50 to-[rgb(243,244,246,0.95)];
+    @apply dark:from-[rgb(17,24,39,0.75)] via-gray-800 to-gray-900;
   }
 
   .container::after {
     @apply content-none sm:content-[''] sm:h-[176px] sm:w-[176px] sm:rounded-full sm:absolute sm:-top-[80px] sm:-left-[88px] sm:-z-[1];
-    background: rgb(255,177,51);
+    @apply bg-gradient-to-t from-white via-gray-50 to-[rgb(243,244,246,0.95)];
     background: radial-gradient(circle, rgba(255,177,51,1) 0%, rgba(255,177,51,1) 50%, rgba(255,142,39,1) 100%);
+  }
+
+  html.dark .container::after {
+    @apply sm:h-[128px] sm:w-[128px] sm:top-auto sm:left-auto sm:-bottom-[40px] sm:-right-[60px];
+    @apply bg-gradient-to-t from-white via-gray-50 to-[rgb(243,244,246,0.95)];
+    background: radial-gradient(circle, rgba(147,152,219,1) 0%, rgba(147,152,219,1) 50%, rgba(110,114,201,1) 100%);
   }
 
   .header {
@@ -17,17 +24,17 @@
       @apply grid gap-2;
 
       & span {
-        @apply text-lg text-gray-500;
+        @apply text-lg text-gray-500 dark:text-gray-400;
       }
 
       & h1 {
-        @apply text-5xl font-extrabold;
+        @apply text-5xl font-extrabold dark:text-white;
       }
     }
   }
 
   .image {
-    @apply filter drop-shadow-[0_25px_25px_rgb(251,198,43,0.3)];
+    @apply filter drop-shadow-[0_25px_25px_rgb(251,198,43,0.3)] dark:drop-shadow-[0_25px_25px_rgb(255,255,255,0.2)];
 
     & .animated {
       animation: float 6s ease-in-out infinite;
@@ -40,6 +47,13 @@
     & h2 {
       @apply text-[144px] leading-[196px] bg-clip-text;
       background: linear-gradient(180deg, #111827 0%, #6B7280 100%);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+    }
+
+    html.dark & h2 {
+      @apply text-[144px] leading-[196px] bg-clip-text;
+      background: linear-gradient(180deg, #F3F4F6 0%, #1F2937 100%);
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
     }

@@ -45,7 +45,7 @@ module.exports = {
         900: '#111827',
       },
 
-      black: '#111111',
+      black: '#0F141E',
       white: '#FFFFFF',
       transparent: 'transparent',
     },
