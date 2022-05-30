@@ -1,4 +1,5 @@
 export * from './useCurrentWeather.js'
+export * from './useDarkMode.js'
 
 /**
  * @template T

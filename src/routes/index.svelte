@@ -1,21 +1,20 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
-  import { useCurrentWeather } from '@/hooks'
+  import { useCurrentWeather, useDarkMode } from '@/hooks'
   import Header from '@/components/Header.svelte'
   import Picture from '@/components/Picture.svelte'
   import Loading from '@/components/Loading.svelte'
   import Temperature from '@/components/Temperature.svelte'
 
-  const [weather, update] = useCurrentWeather()
   /** @type {import('svelte/store').Unsubscriber} */
   let unsubscribe = () => {}
 
-  onMount(async () => {
-    const htmlRef = document.querySelector('html')
-    await update()
-    unsubscribe = weather.subscribe(val => {
-      if(htmlRef) htmlRef.classList[val.isDay ? 'remove' : 'add']('dark')
-    })
+  const [weather, update] = useCurrentWeather()
+  const { activatesDarkMode } = useDarkMode()
+
+  onMount(() => {
+    unsubscribe = weather.subscribe(now => activatesDarkMode(now.isNight))
+    update()
   })
   onDestroy(() => unsubscribe())
 </script>

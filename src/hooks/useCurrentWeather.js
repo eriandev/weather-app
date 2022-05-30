@@ -32,18 +32,18 @@ export function useCurrentWeather() {
       }
 
       const { current, location } = data
-      const isDay = !!current.is_day
+      const isNight = !current.is_day
       const condition = getConditionByCode(current.condition.code)
 
       set({
-        isDay,
+        isNight,
         failed: false,
         loading: false,
         tempCondition: condition,
         locationName: location.name,
         tempText: current.condition.text,
         tempDegrees: Math.floor(current.temp_c),
-        tempImage: `${isDay ? 'day' : 'night'}-${condition}`,
+        tempImage: `${isNight ? 'night' : 'day'}-${condition}`,
         locationDate: getFormattedDateByUnixTime(location.localtime_epoch),
       })
 

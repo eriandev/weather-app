@@ -14,14 +14,14 @@ export const RAPIAPI_REQUEST_OPTIONS = {
 
 
 
-export const BASE_URL = VITE_BASE_URL ?? '/'
+export const BASE_URL = VITE_BASE_URL
 export const OWN_API_URL = `${BASE_URL}api/weather/`
 export const AVAIBLE_ENDPOINTS = ['current', 'forecast']
 export const WEEK_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 /** @type {CurrentWeatherStore} */
 export const DEFAULT_CURRENT_STORE = {
-  isDay: true,
+  isNight: true,
   failed: false,
   loading: true,
   tempDegrees: 0,
@@ -33,7 +33,7 @@ export const DEFAULT_CURRENT_STORE = {
 
 /**
  * @typedef {object} CurrentWeatherStore
- * @prop {boolean} isDay
+ * @prop {boolean} isNight — Night status
  * @prop {boolean} failed — Failed status
  * @prop {boolean} loading — Loading status
  * @prop {string} locationName — Location name
