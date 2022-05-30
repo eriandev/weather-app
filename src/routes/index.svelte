@@ -19,7 +19,7 @@
   onDestroy(() => unsubscribe())
 </script>
 
-{#if $currentWeather.loading}
+{#if $currentWeather.loading || $currentWeather.failed}
   <Loading />
 {:else}
   <Header title={$currentWeather.locationName} date={$currentWeather.locationDate} />

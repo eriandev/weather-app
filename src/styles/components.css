@@ -60,4 +60,12 @@
       @apply text-2xl capitalize;
     }
   }
+
+  .error {
+    @apply grid grid-flow-row auto-rows-min content-center h-full text-center dark:text-white;
+
+    & h1 {
+      @apply text-8xl font-bold dark:text-white;
+    }
+  }
 }
