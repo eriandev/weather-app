@@ -17,7 +17,7 @@ export const RAPIAPI_REQUEST_OPTIONS = {
 export const BASE_URL = VITE_BASE_URL
 export const OWN_API_URL = `${BASE_URL}api/weather/`
 export const AVAIBLE_ENDPOINTS = ['current', 'forecast']
-export const WEEK_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+export const MONTHS_LIST = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 /** @type {CurrentWeatherStore} */
 export const DEFAULT_CURRENT_STORE = {

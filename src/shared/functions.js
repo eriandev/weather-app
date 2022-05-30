@@ -1,4 +1,4 @@
-import { WEEK_MONTHS } from '@/shared/constants'
+import { MONTHS_LIST } from '@/shared/constants'
 import weatherCodes from '@/assets/weather_codes.json'
 
 /**
@@ -20,5 +20,5 @@ export function getFormattedDateByUnixTime(unixTime) {
   const monthNumber = date.getMonth()
   const dayNumber = date.getDate()
   const year = date.getFullYear()
-  return `${WEEK_MONTHS[monthNumber]} ${dayNumber}, ${year}`
+  return `${MONTHS_LIST[monthNumber]} ${dayNumber}, ${year}`
 }
