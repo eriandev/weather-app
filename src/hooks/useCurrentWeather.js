@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store'
 import { getCurrentWeather } from '@/services'
-import { getConditionByCode } from '@/shared/functions'
 import { DEFAULT_CURRENT_STORE } from '@/shared/constants'
+import { getConditionByCode, getFormattedDateByUnixTime } from '@/shared/functions'
 
 /**
  * Hook for the use of the current weather
@@ -41,10 +41,10 @@ export function useCurrentWeather() {
         loading: false,
         tempCondition: condition,
         locationName: location.name,
-        locationDate: location.localtime,
         tempText: current.condition.text,
         tempDegrees: Math.floor(current.temp_c),
         tempImage: `${isDay ? 'day' : 'night'}-${condition}`,
+        locationDate: getFormattedDateByUnixTime(location.localtime_epoch),
       })
 
     } catch (error) {
