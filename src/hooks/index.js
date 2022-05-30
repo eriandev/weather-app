@@ -3,7 +3,7 @@ export * from './useDarkMode.js'
 
 /**
  * @template T
- * @typedef {function(): [Subscribe<T>, UpdateStore]} UseWeather
+ * @typedef {function(): { currentWeather: Subscribe<T>, updateCurrentStore: UpdateStore }} UseCurrentWeather
 */
 
 /**

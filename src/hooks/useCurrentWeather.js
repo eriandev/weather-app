@@ -5,7 +5,7 @@ import { getConditionByCode, getFormattedDateByUnixTime } from '@/shared/functio
 
 /**
  * Hook for the use of the current weather
- * @type {import('@/hooks').UseWeather<import('@/shared/constants').CurrentWeatherStore>}
+ * @type {import('@/hooks').UseCurrentWeather<import('@/shared/constants').CurrentWeatherStore>}
 */
 export function useCurrentWeather() {
   const { set, update, subscribe } = writable(DEFAULT_CURRENT_STORE)
@@ -14,7 +14,7 @@ export function useCurrentWeather() {
    * @type {import('@/hooks').UpdateStore}
    * @see https://www.weatherapi.com/docs/#intro-request
   */
-  const updateStore = async (query) => {
+  const updateCurrentStore = async (query) => {
     update(store => ({ ...store, loading: true }))
 
     try {
@@ -60,5 +60,5 @@ export function useCurrentWeather() {
   }
 
   // @ts-ignore
-  return [{subscribe}, updateStore]
+  return { currentWeather: {subscribe}, updateCurrentStore }
 }

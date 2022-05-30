@@ -9,20 +9,20 @@
   /** @type {import('svelte/store').Unsubscriber} */
   let unsubscribe = () => {}
 
-  const [weather, update] = useCurrentWeather()
   const { activatesDarkMode } = useDarkMode()
+  const { currentWeather, updateCurrentStore } = useCurrentWeather()
 
   onMount(() => {
-    unsubscribe = weather.subscribe(now => activatesDarkMode(now.isNight))
-    update()
+    unsubscribe = currentWeather.subscribe(now => activatesDarkMode(now.isNight))
+    updateCurrentStore()
   })
   onDestroy(() => unsubscribe())
 </script>
 
-{#if $weather.loading}
+{#if $currentWeather.loading}
   <Loading />
 {:else}
-  <Header title={$weather.locationName} date={$weather.locationDate} />
-  <Picture animated name={$weather.tempImage} class="mt-12 aspect-square" />
-  <Temperature tempDegrees={$weather.tempDegrees} tempCondition={$weather.tempCondition} />
+  <Header title={$currentWeather.locationName} date={$currentWeather.locationDate} />
+  <Picture animated name={$currentWeather.tempImage} class="mt-12 aspect-square" />
+  <Temperature tempDegrees={$currentWeather.tempDegrees} tempCondition={$currentWeather.tempCondition} />
 {/if}
