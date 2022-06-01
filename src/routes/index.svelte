@@ -1,6 +1,7 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
   import { useCurrentWeather, useDarkMode } from '@/hooks'
+  import { currentWeather } from '@/hooks/useCurrentWeather'
   import Header from '@/components/Header.svelte'
   import Picture from '@/components/Picture.svelte'
   import Loading from '@/components/Loading.svelte'
@@ -10,7 +11,7 @@
   let unsubscribe = () => {}
 
   const { activatesDarkMode } = useDarkMode()
-  const { currentWeather, updateCurrentStore } = useCurrentWeather()
+  const { updateCurrentStore } = useCurrentWeather()
 
   onMount(() => {
     unsubscribe = currentWeather.subscribe(now => activatesDarkMode(now.isNight))

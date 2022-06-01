@@ -1,6 +1,6 @@
 import { onMount } from 'svelte'
 
-export function useDarkMode() {
+export default function useDarkMode() {
   /** @type {HTMLHtmlElement | null} */
   let htmlRef = null
   onMount(() => htmlRef = document.querySelector('html'))

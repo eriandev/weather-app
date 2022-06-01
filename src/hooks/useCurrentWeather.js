@@ -3,13 +3,14 @@ import { getCurrentWeather } from '@/services'
 import { DEFAULT_CURRENT_STORE } from '@/shared/constants'
 import { getConditionByCode, getFormattedDateByUnixTime } from '@/shared/functions'
 
+const { set, update, subscribe } = writable(DEFAULT_CURRENT_STORE)
+export const currentWeather = { subscribe }
+
 /**
  * Hook for the use of the current weather
  * @type {import('@/hooks').UseCurrentWeather<import('@/shared/constants').CurrentWeatherStore>}
 */
-export function useCurrentWeather() {
-  const { set, update, subscribe } = writable(DEFAULT_CURRENT_STORE)
-
+export default function useCurrentWeather() {
   /**
    * @type {import('@/hooks').UpdateStore}
    * @see https://www.weatherapi.com/docs/#intro-request
@@ -59,6 +60,5 @@ export function useCurrentWeather() {
     }
   }
 
-  // @ts-ignore
-  return { currentWeather: {subscribe}, updateCurrentStore }
+  return { updateCurrentStore }
 }

@@ -1,9 +1,9 @@
-export * from './useCurrentWeather.js'
-export * from './useDarkMode.js'
+export { default as useCurrentWeather } from './useCurrentWeather.js'
+export { default as useDarkMode } from './useDarkMode.js'
 
 /**
  * @template T
- * @typedef {function(): { currentWeather: Subscribe<T>, updateCurrentStore: UpdateStore }} UseCurrentWeather
+ * @typedef {function(): { updateCurrentStore: UpdateStore }} UseCurrentWeather
 */
 
 /**
