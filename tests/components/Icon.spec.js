@@ -4,7 +4,7 @@ import Icon from '@/components/Icon.svelte'
 
 describe('Icon component', () => {
   it('should be created', () => {
-    const component = render(Icon, { name: 'day-sun', alt: 'Day Sun' })
+    const component = render(Icon, { name: 'home' })
     expect(component).toBeTruthy()
   })
 })
