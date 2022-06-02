@@ -38,6 +38,6 @@
   <Loading />
 {:else}
   <Header title={$currentWeather.locationName} date={$currentWeather.locationDate} />
-  <Picture animated name={$currentWeather.tempImage} class="mt-12 aspect-square" />
+  <Picture animated name={$currentWeather.tempImage} class="w-[324px] mt-12 mx-auto aspect-square" />
   <Temperature tempDegrees={$currentWeather.tempDegrees} tempCondition={$currentWeather.tempCondition} />
 {/if}

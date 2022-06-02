@@ -1,18 +1,19 @@
 @layer components {
   .container {
-    @apply block relative h-full p-6 border-8 border-gray-50 sm:p-10 sm:pt-14 sm:h-auto sm:w-[420px] sm:aspect-[9/16] sm:rounded-[42px];
+    @apply block relative text-center p-6 h-full md:w-[420px] md:min-h-[796px];
     @apply bg-gradient-to-t from-white via-gray-50 to-[rgb(243,244,246,0.95)];
+    @apply md:border-8 md:border-gray-50 md:p-10 md:pt-14 md:h-auto md:w-[420px] md:rounded-[42px];
     @apply dark:from-[rgb(17,24,39,0.75)] dark:via-gray-800 dark:to-gray-900 dark:border-gray-800;
   }
 
   .container::after {
-    @apply content-none sm:content-[''] sm:h-[176px] sm:w-[176px] sm:rounded-full sm:absolute sm:-top-[80px] sm:-left-[88px] sm:-z-[1];
+    @apply content-none md:content-[''] md:h-[176px] md:w-[176px] md:rounded-full md:absolute md:-top-[80px] md:-left-[88px] md:-z-[1];
     @apply bg-gradient-to-t from-white via-gray-50 to-[rgb(243,244,246,0.95)];
     background: radial-gradient(circle, rgba(255,177,51,1) 0%, rgba(255,177,51,1) 50%, rgba(255,142,39,1) 100%);
   }
 
   html.dark .container::after {
-    @apply sm:h-[128px] sm:w-[128px] sm:top-auto sm:left-auto sm:-bottom-[40px] sm:-right-[60px];
+    @apply md:h-[128px] md:w-[128px] md:top-auto md:left-auto md:-bottom-[40px] md:-right-[60px];
     @apply bg-gradient-to-t from-white via-gray-50 to-[rgb(243,244,246,0.95)];
     background: radial-gradient(circle, rgba(147,152,219,1) 0%, rgba(147,152,219,1) 50%, rgba(110,114,201,1) 100%);
   }
