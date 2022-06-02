@@ -61,6 +61,23 @@
     }
   }
 
+  .overlay {
+    @apply grid absolute place-items-center px-12 bg-[rgba(0,0,0,0.5)] rounded-[42px] top-0 left-0 z-50 w-full h-full;
+
+    & .modal {
+      @apply grid gap-4 w-full px-4 py-8 text-center bg-white rounded-[42px];
+
+      h2 {
+        @apply text-4xl;
+      }
+
+      .btn {
+        @apply py-2 px-4 mx-auto bg-snow text-white tracking-wide outline-none rounded-lg;
+        @apply transition-transform duration-100 ease-in-out active:transform active:scale-[0.98];
+      }
+    }
+  }
+
   .error {
     @apply grid grid-flow-row auto-rows-min content-center h-full text-center dark:text-white;
 

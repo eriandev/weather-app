@@ -1,5 +1,6 @@
 export { default as useCurrentWeather } from './useCurrentWeather.js'
 export { default as useDarkMode } from './useDarkMode.js'
+export { default as useGeolocation } from './useGeolocation.js'
 
 /**
  * @template T
