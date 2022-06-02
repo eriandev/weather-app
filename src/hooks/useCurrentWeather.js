@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store'
+import { useGeolocation } from '@/hooks'
 import { getCurrentWeather } from '@/services'
 import { DEFAULT_CURRENT_STORE } from '@/shared/constants'
 import { getConditionByCode, getFormattedDateByUnixTime } from '@/shared/functions'
@@ -11,6 +12,8 @@ export const currentWeather = { subscribe }
  * @type {import('@/hooks').UseCurrentWeather<import('@/shared/constants').CurrentWeatherStore>}
 */
 export default function useCurrentWeather() {
+  const { getCurrentPosition } = useGeolocation({})
+
   /**
    * @type {import('@/hooks').UpdateStore}
    * @see https://www.weatherapi.com/docs/#intro-request
@@ -60,5 +63,15 @@ export default function useCurrentWeather() {
     }
   }
 
-  return { updateCurrentStore }
+  const tryUpdateWithCoords = async () => {
+    try {
+      const { coords } = await getCurrentPosition()
+      const position = `${coords.latitude},${coords.longitude}`
+      await updateCurrentStore(position)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  return { updateCurrentStore, tryUpdateWithCoords }
 }

@@ -1,17 +1,16 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
+  import { useCurrentWeather, useDarkMode } from '@/hooks'
   import { currentWeather } from '@/hooks/useCurrentWeather'
   import { isLocationAllowed } from '@/hooks/useGeolocation'
   import { openModal, closeModal } from '@/components/LocationModal.svelte'
-  import { useCurrentWeather, useDarkMode, useGeolocation } from '@/hooks'
   import Header from '@/components/Header.svelte'
   import Picture from '@/components/Picture.svelte'
   import Loading from '@/components/Loading.svelte'
   import Temperature from '@/components/Temperature.svelte'
 
   const { activatesDarkMode } = useDarkMode()
-  const { getCurrentPosition } = useGeolocation({})
-  const { updateCurrentStore } = useCurrentWeather()
+  const { updateCurrentStore, tryUpdateWithCoords } = useCurrentWeather()
 
   const unsubscribe = currentWeather.subscribe(info => mainProcess(info))
 
@@ -32,16 +31,6 @@
       } else openModal()
     } else closeModal()
     activatesDarkMode(weatherInfo.isNight)
-  }
-
-  async function tryUpdateWithCoords () {
-    try {
-      const { coords } = await getCurrentPosition()
-      const position = `${coords.latitude},${coords.longitude}`
-      await updateCurrentStore(position)
-    } catch (error) {
-      console.error(error)
-    }
   }
 </script>
 

@@ -1,6 +1,7 @@
 <script context="module">
   import { writable } from 'svelte/store'
   import { fade, fly } from 'svelte/transition'
+  import { useCurrentWeather } from '@/hooks'
 
   const { set, subscribe } = writable(false)
 
@@ -10,26 +11,15 @@
 </script>
 
 <script>
-  import { useGeolocation, useCurrentWeather } from '@/hooks'
-
   let loading = false
-
-  const { getCurrentPosition } = useGeolocation({})
-  const { updateCurrentStore } = useCurrentWeather()
+  const { tryUpdateWithCoords } = useCurrentWeather()
 
   async function requestLocation() {
     if(loading) return
     loading = !loading
 
-    try {
-      const { coords } = await getCurrentPosition()
-      const position = `${coords.latitude},${coords.longitude}`
-      await updateCurrentStore(position)
-    } catch (error) {
-      console.error(error)
-    } finally {
-      loading = false
-    }
+    await tryUpdateWithCoords()
+    loading = false
   }
 </script>
 

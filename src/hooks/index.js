@@ -4,7 +4,7 @@ export { default as useGeolocation } from './useGeolocation.js'
 
 /**
  * @template T
- * @typedef {function(): { updateCurrentStore: UpdateStore }} UseCurrentWeather
+ * @typedef {function(): { updateCurrentStore: UpdateStore, tryUpdateWithCoords: () => Promise<void> }} UseCurrentWeather
 */
 
 /**
