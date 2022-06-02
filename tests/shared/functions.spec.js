@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest'
+import { MONTHS_LIST } from '@/shared/constants'
 import { getConditionByCode, getFormattedDateByUnixTime } from '@/shared/functions'
 import weatherCodes from '@/assets/weather_codes.json'
+
+const date = new Date(1654137000 * 1000)
+const monthNumber = date.getMonth()
+const dayNumber = date.getDate()
+const year = date.getFullYear()
+const formattedDate = `${MONTHS_LIST[monthNumber]} ${dayNumber}, ${year}`
 
 describe('getConditionByCode function', () => {
   it('should return empty string', () => {
@@ -22,6 +29,6 @@ describe('getFormattedDateByUnixTime function', () => {
 
   it('should return the expected result', () => {
     const result = getFormattedDateByUnixTime(1654137000)
-    expect(result).toEqual('June 1, 2022')
+    expect(result).toEqual(formattedDate)
   })
 })
