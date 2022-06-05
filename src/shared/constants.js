@@ -44,6 +44,7 @@ export const DEFAULT_CURRENT_STORE = {
  * @prop {string} tempCondition — Weather condition image name
  * @prop {string=} errorMessage — Error description
  * @prop {number=} errorCode
+ * https://www.weatherapi.com/docs/#intro-error-codes
  * | HTTP Status Code 	| Error code 	| Description                                 |
  * |------------------	|------------	|---------------------------------------------|
  * | 400              	| 0         	| Request failed                              |
