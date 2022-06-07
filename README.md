@@ -1,34 +1,34 @@
 <div align="center">
   <a target="_blank" target="https://www.figma.com/community/file/1023658389987124693">
-    <img alt="Weather App Cover" title="Weather App" src="https://erianvc.github.io/api/weather-app/preview.png" />
-  <a/>
+    <img alt="Weather App Cover" title="Weather App" src="https://eriandev.github.io/api/weather-app/preview.png" />
+  </a>
 </div>
 
 <br />
 
 <div align="center">
   <a target="_blank" href="https://svelte.dev/">
-    <img title="Svelte" alt="Svelte badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Ferianvc.github.io%2Fapi%2Fweather-app%2Fbadges%2Fsvelte%2F" />
+    <img title="Svelte" alt="Svelte badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Feriandev.github.io%2Fapi%2Fweather-app%2Fbadges%2Fsvelte%2F" />
   </a>
   <a target="_blank" href="https://kit.svelte.dev/">
-    <img title="SvelteKit" alt="SvelteKit badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Ferianvc.github.io%2Fapi%2Fweather-app%2Fbadges%2Fsveltekit%2F" />
+    <img title="SvelteKit" alt="SvelteKit badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Feriandev.github.io%2Fapi%2Fweather-app%2Fbadges%2Fsveltekit%2F" />
   </a>
   <a target="_blank" href="https://tailwindcss.com/">
-    <img title="TailwindCSS" alt="TailwindCSS badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Ferianvc.github.io%2Fapi%2Fweather-app%2Fbadges%2Ftailwindcss%2F" />
+    <img title="TailwindCSS" alt="TailwindCSS badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Feriandev.github.io%2Fapi%2Fweather-app%2Fbadges%2Ftailwindcss%2F" />
   </a>
   <a target="_blank" href="https://vitest.dev/">
-    <img title="Vitest" alt="Vitest badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Ferianvc.github.io%2Fapi%2Fweather-app%2Fbadges%2Fvitest%2F" />
+    <img title="Vitest" alt="Vitest badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Feriandev.github.io%2Fapi%2Fweather-app%2Fbadges%2Fvitest%2F" />
   </a>
   <a target="_blank" href="https://playwright.dev/">
-    <img title="Playwright" alt="Playwright badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Ferianvc.github.io%2Fapi%2Fweather-app%2Fbadges%2Fplaywright%2F" />
+    <img title="Playwright" alt="Playwright badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Feriandev.github.io%2Fapi%2Fweather-app%2Fbadges%2Fplaywright%2F" />
   </a>
 </div>
 <div align="center">
-  <a target="_blank" href="https://github.com/erianvc/weather-app/actions/workflows/testing.yaml">
-    <img title="Testing Pipeline" alt="Testing Pipeline badge" src="https://github.com/erianvc/weather-app/actions/workflows/testing.yaml/badge.svg" />
+  <a target="_blank" href="https://github.com/eriandev/weather-app/actions/workflows/testing.yaml">
+    <img title="Testing Pipeline" alt="Testing Pipeline badge" src="https://github.com/eriandev/weather-app/actions/workflows/testing.yaml/badge.svg" />
   </a>
-  <a target="_blank" href="https://erianvc-weather-app.vercel.app/">
-    <img title="Vercel" alt="Vercel badge" src="https://vercelbadge.vercel.app/api/erianvc/weather-app" />
+  <a target="_blank" href="https://eriandev-weather-app.vercel.app/">
+    <img title="Vercel" alt="Vercel badge" src="https://vercelbadge.vercel.app/api/eriandev/weather-app" />
   </a>
 </div>
 
@@ -63,7 +63,7 @@ You need to be using:
 Clone the repository & install dependencies:
 
 ```bash
-git clone https://github.com/erianvc/weather-app.git
+git clone https://github.com/eriandev/weather-app.git
 cd weather-app
 npm install
 ```
@@ -85,7 +85,7 @@ VITE_RAPIAPI_KEY=
 
 Contributions, issues and feature requests are welcome!
 <br />
-Feel free to check [issues page](https://github.com/erianvc/weather-app/issues).
+Feel free to check [issues page](https://github.com/eriandev/weather-app/issues).
 
 ## ⭐️ Show your support
 
