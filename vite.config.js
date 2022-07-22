@@ -1,13 +1,13 @@
+import url from 'node:url'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { sveltekit } from '@sveltejs/kit/vite'
 
-const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url))
+const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(url.fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [
-    svelte({ hot: !process.env.VITEST }),
+    sveltekit({ hot: !process.env.VITEST }),
   ],
   resolve: {
     alias: {

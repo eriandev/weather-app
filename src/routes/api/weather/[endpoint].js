@@ -5,7 +5,7 @@ import { AVAIBLE_ENDPOINTS } from '@/shared/constants'
  * @type {import('@sveltejs/kit').RequestHandler}
  * @see https://kit.svelte.dev/docs/routing#endpoints
 */
-export async function get(event) {
+export async function GET(event) {
   const { clientAddress, params, url: { searchParams } } = event
   const query = searchParams.get('q') ?? clientAddress
   const { endpoint } = params
