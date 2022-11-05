@@ -61,6 +61,12 @@ module.exports = {
 
     animation: {
       float: 'float 6s ease-in-out infinite',
+    },
+
+    extend: {
+      borderRadius: {
+        '4xl': '42px',
+      }
     }
   },
 }

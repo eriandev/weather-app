@@ -19,21 +19,22 @@
 
   onMount(() => {
     mainElement = document.querySelector('main')
-    if(mainElement) mainElement.style.backgroundImage = 'url(images/png/alone.png)'
+    if(mainElement) {
+      mainElement.style.backgroundImage = 'url(images/png/alone.png)'
+      mainElement.style.backgroundPosition = 'center'
+      mainElement.style.backgroundSize = 'cover'
+    }
   })
   onDestroy(() => {
-    if(mainElement) mainElement.style.backgroundImage = ''
+    if(mainElement) {
+      mainElement.style.backgroundImage = ''
+      mainElement.style.backgroundPosition = ''
+      mainElement.style.backgroundSize = ''
+    }
   })
 </script>
 
-<section class="error">
-  <h1>{status}</h1>
-
+<section class="grid h-full grid-flow-row auto-rows-min content-center text-center dark:text-white">
+  <h1 class="text-8xl font-bold dark:text-white">{status}</h1>
   <p>{error?.message}</p>
 </section>
-
-<style global lang="postcss">
-  main {
-    @apply bg-cover bg-center;
-  }
-</style>

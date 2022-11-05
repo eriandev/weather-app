@@ -2,8 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import './styles/components.css';
-
 @layer base {
   :root {
     font-size: 16px;
