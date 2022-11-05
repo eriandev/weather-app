@@ -1,5 +1,6 @@
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,svelte}'],
   safelist: [
@@ -49,5 +50,17 @@ module.exports = {
       white: '#FFFFFF',
       transparent: 'transparent',
     },
+
+    keyframes: {
+      float: {
+        '0%': { transform: 'translatey(0px)' },
+        '50%': { transform: 'translatey(-20px)' },
+        '100%': { transform: 'translatey(0px)' },
+      }
+    },
+
+    animation: {
+      float: 'float 6s ease-in-out infinite',
+    }
   },
 }
