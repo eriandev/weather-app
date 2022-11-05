@@ -2,6 +2,15 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import './styles/base.css';
 @import './styles/components.css';
 @import './styles/utilities.css';
+
+@layer base {
+  :root {
+    font-size: 16px;
+  }
+  
+  body {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
