@@ -1,36 +1,40 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
-  import { useCurrentWeather, useDarkMode } from '@/hooks'
-  import { currentWeather } from '@/hooks/useCurrentWeather'
-  import { isLocationAllowed } from '@/hooks/useGeolocation'
-  import { openModal, closeModal } from '@/components/LocationModal.svelte'
+
   import Header from '@/components/Header.svelte'
   import Picture from '@/components/Picture.svelte'
   import Loading from '@/components/Loading.svelte'
   import Temperature from '@/components/Temperature.svelte'
+
+  import { useCurrentWeather, useDarkMode } from '@/hooks'
+  import { currentWeather } from '@/hooks/useCurrentWeather'
+  import { isLocationAllowed } from '@/hooks/useGeolocation'
+  import { openModal, closeModal } from '@/components/LocationModal.svelte'
 
   const { activatesDarkMode } = useDarkMode()
   const { updateCurrentStore, tryUpdateWithCoords } = useCurrentWeather()
 
   const unsubscribe = currentWeather.subscribe(info => mainProcess(info))
 
-  onMount(async () => {
-    if (await isLocationAllowed())
-      tryUpdateWithCoords()
-    else await updateCurrentStore()
-  })
+  onMount(() => tryWithCoordsOr(updateCurrentStore))
   onDestroy(() => unsubscribe())
 
   /**
    * @param {import('@/shared/constants').CurrentWeatherStore} weatherInfo
   */
   async function mainProcess(weatherInfo) {
-    if(weatherInfo.failed && !weatherInfo.loading) {
-      if (await isLocationAllowed()) {
-        tryUpdateWithCoords()
-      } else openModal()
-    } else closeModal()
+    const isWeatherInfoFailed = weatherInfo.failed && !weatherInfo.loading
+    if(isWeatherInfoFailed) tryWithCoordsOr(openModal)
+    else closeModal()
     activatesDarkMode(weatherInfo.isNight)
+  }
+
+  /**
+   * @param {(param?: string) => Promise<void> | void} elseFunction
+  */
+  async function tryWithCoordsOr(elseFunction) {
+    if (await isLocationAllowed()) tryUpdateWithCoords()
+    else await elseFunction()
   }
 </script>
 
