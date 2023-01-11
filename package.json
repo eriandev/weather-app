@@ -15,21 +15,21 @@
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {
-    "@playwright/test": "1.24.0",
+    "@playwright/test": "1.29.2",
     "@sveltejs/adapter-vercel": "1.0.0-next.65",
     "@sveltejs/kit": "1.0.0-next.391",
-    "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/svelte": "3.1.3",
-    "@testing-library/user-event": "14.3.0",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/svelte": "3.2.2",
+    "@testing-library/user-event": "14.4.3",
     "c8": "7.12.0",
-    "eslint": "8.20.0",
+    "eslint": "8.31.0",
     "eslint-plugin-svelte3": "4.0.0",
-    "jsdom": "20.0.0",
-    "svelte": "3.49.0",
-    "svelte-check": "2.8.0",
-    "svelte-inline-svg": "1.1.3",
+    "jsdom": "20.0.3",
+    "svelte": "3.55.1",
+    "svelte-check": "2.10.3",
+    "svelte-inline-svg": "1.2.0",
     "svelte-preprocess": "4.10.7",
-    "tailwindcss": "3.1.6",
+    "tailwindcss": "3.2.4",
     "vitest": "0.18.1"
   }
 }
