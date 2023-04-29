@@ -9,7 +9,7 @@
 
   const sizing = {
     width: size,
-    height: size,
+    height: size
   }
 </script>
 

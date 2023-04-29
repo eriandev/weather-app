@@ -14,24 +14,24 @@
   const { activatesDarkMode } = useDarkMode()
   const { updateCurrentStore, tryUpdateWithCoords } = useCurrentWeather()
 
-  const unsubscribe = currentWeather.subscribe(info => mainProcess(info))
+  const unsubscribe = currentWeather.subscribe((info) => mainProcess(info))
 
   onMount(() => tryWithCoordsOr(updateCurrentStore))
   onDestroy(() => unsubscribe())
 
   /**
    * @param {import('@/shared/constants').CurrentWeatherStore} weatherInfo
-  */
+   */
   async function mainProcess(weatherInfo) {
     const isWeatherInfoFailed = weatherInfo.failed && !weatherInfo.loading
-    if(isWeatherInfoFailed) tryWithCoordsOr(openModal)
+    if (isWeatherInfoFailed) tryWithCoordsOr(openModal)
     else closeModal()
     activatesDarkMode(weatherInfo.isNight)
   }
 
   /**
    * @param {(param?: string) => Promise<void> | void} elseFunction
-  */
+   */
   async function tryWithCoordsOr(elseFunction) {
     if (await isLocationAllowed()) tryUpdateWithCoords()
     else await elseFunction()
@@ -42,6 +42,6 @@
   <Loading />
 {:else}
   <Header title={$currentWeather.locationName} date={$currentWeather.locationDate} />
-  <Picture animated name={$currentWeather.tempImage} class="w-[324px] mt-12 mx-auto aspect-square" />
+  <Picture animated name={$currentWeather.tempImage} class="mx-auto mt-12 aspect-square w-[324px]" />
   <Temperature tempDegrees={$currentWeather.tempDegrees} tempCondition={$currentWeather.tempCondition} />
 {/if}

@@ -3,24 +3,24 @@ export * from './weather.js'
 /**
  * @typedef GetWeatherData
  * @type {function({ endpoint: string; query?: string }): Promise<WeatherData & ErrorResponse>}
-*/
+ */
 
 /**
  * @typedef GetWeather
  * @type {function(string=): Promise<GetWeatherResponse>}
-*/
+ */
 
 /**
  * @typedef {object} GetWeatherResponse
  * @prop {boolean} ok — Status check
  * @prop {WeatherData} data — Response data
  * @prop {ErrorResponse['error']=} error — Possible error response
-*/
+ */
 
 /**
  * @typedef WeatherData
  * @type {object}
- * 
+ *
  * @prop {object} location
  * @prop {string} location.name — Location name
  * @prop {string} location.region — Region or state of the location, if availa
@@ -30,19 +30,19 @@ export * from './weather.js'
  * @prop {string} location.tz_id — Time zone name
  * @prop {number} location.localtime_epoch — Local date and time in unix time
  * @prop {string} location.localtime — Local date and time
- * 
+ *
  * @prop {object} current
  * @prop {number} current.last_updated_epoch — Local time when the real time data was updated in unix time
- * @prop {string} current.last_updated — 	Local time when the real time data was updated
+ * @prop {string} current.last_updated —  Local time when the real time data was updated
  * @prop {number} current.temp_c — Temperature in celsius
  * @prop {number} current.temp_f — Temperature in fahrenheit
  * @prop {number} current.is_day — 1 = Yes, 0 = No
- * 
+ *
  * @prop {object} current.condition
  * @prop {string} current.condition.icon — Weather icon url
  * @prop {string} current.condition.text — Weather condition text
  * @prop {number} current.condition.code — Weather condition unique code
- * 
+ *
  * @prop {number} current.wind_mph — Wind speed in miles per hour
  * @prop {number} current.wind_kph — Wind speed in kilometer per hour
  * @prop {number} current.wind_degree — Wind direction in degrees
@@ -60,18 +60,18 @@ export * from './weather.js'
  * @prop {number} current.gust_mph — Wind gust in miles per hour
  * @prop {number} current.gust_kph — Wind gust in kilometer per hour
  * @prop {number} current.uv — UV Index
- * 
+ *
  * @prop {object} forecast
  * @prop {Array<Forecastday>} forecast.forecastday — Weather icon url
-*/
+ */
 
 /**
  * @typedef Forecastday
  * @type {object}
- * 
+ *
  * @prop {string} date — Forecast date
  * @prop {number} date_epoch — Forecast date as unix time
- * 
+ *
  * @prop {object} day
  * @prop {number} day.maxtemp_c — Maximum temperature in celsius for the day
  * @prop {number} day.maxtemp_f — Maximum temperature in fahrenheit for the day
@@ -91,24 +91,24 @@ export * from './weather.js'
  * @prop {number} day.daily_will_it_snow — No info
  * @prop {number} day.daily_chance_of_snow — No info
  * @prop {number} day.uv — UV Index
- * 
+ *
  * @prop {object} day.condition
  * @prop {string} day.condition.icon — Weather icon url
  * @prop {string} day.condition.text — Weather condition text
  * @prop {number} day.condition.code — Weather condition unique code
- * 
+ *
  * @prop {object} hour
  * @prop {number} hour.time_epoch — Time as epoch
  * @prop {string} hour.time — Date and time
  * @prop {number} hour.temp_c — Temperature in celsius
  * @prop {number} hour.temp_f — Temperature in fahrenheit
  * @prop {number} hour.is_day — 1 = Yes 0 = No
- * 
+ *
  * @prop {object} hour.condition
  * @prop {string} hour.condition.icon — Weather icon url
  * @prop {string} hour.condition.text — Weather condition text
  * @prop {number} hour.condition.code — Weather condition unique code
- * 
+ *
  * @prop {number} hour.wind_mph — Maximum wind speed in miles per hour
  * @prop {number} hour.wind_kph — Maximum wind speed in kilometer per hour
  * @prop {number} hour.wind_degree — Wind direction in degrees
@@ -118,10 +118,10 @@ export * from './weather.js'
  * @prop {number} hour.precip_mm — Precipitation amount in millimeters
  * @prop {number} hour.precip_in — Precipitation amount in inches
  * @prop {number} hour.humidity — Humidity as percentage
- * @prop {number} hour.cloud — 	Cloud cover as percentage
+ * @prop {number} hour.cloud — Cloud cover as percentage
  * @prop {number} hour.feelslike_c — Feels like temperature as celcius
  * @prop {number} hour.feelslike_f — Feels like temperature as fahrenheit
- * @prop {number} hour.windchill_c — 	Windchill temperature in celcius
+ * @prop {number} hour.windchill_c — Windchill temperature in celcius
  * @prop {number} hour.windchill_f — Windchill temperature in fahrenheit
  * @prop {number} hour.heatindex_c — Heat index in celcius
  * @prop {number} hour.heatindex_f — Heat index in fahrenheit
@@ -136,7 +136,7 @@ export * from './weather.js'
  * @prop {number} hour.gust_mph — Wind gust in miles per hour
  * @prop {number} hour.gust_kph — Wind gust in kilometer per hour
  * @prop {number} hour.uv — UV Index
- * 
+ *
  * @prop {object} astro
  * @prop {string} astro.sunrise — Sunrise time
  * @prop {string} astro.sunset — Sunset time
@@ -154,7 +154,7 @@ export * from './weather.js'
  * | Waning Gibbous              |
  * | Last Quarter                |
  * | Waning Crescent             |
-*/
+ */
 
 /**
  * @typedef ErrorResponse
@@ -162,15 +162,15 @@ export * from './weather.js'
  * @prop {object} error
  * @prop {string} error.message — Error description
  * @prop {number} error.code
- * | HTTP Status Code 	| Error code 	| Description                                 |
- * |------------------	|------------	|---------------------------------------------|
- * | 400              	| 0         	| Request failed                              |
- * | 401              	| 1002       	| API key not provided                        |
- * | 400              	| 1003       	| Parameter 'q' not provided                  |
- * | 400              	| 1005       	| API request url is invalid                  |
- * | 400              	| 1006       	| No location found matching parameter 'q'    |
- * | 401              	| 2006       	| API key provided is invalid                 |
- * | 403              	| 2007       	| API key has exceeded calls per month quota  |
- * | 403              	| 2008       	| API key has been disabled                   |
- * | 400              	| 9999       	| Internal application error                  |
-*/
+ * | HTTP Status Code   | Error code  | Description                                 |
+ * |------------------  |------------ |---------------------------------------------|
+ * | 400                | 0           | Request failed                              |
+ * | 401                | 1002        | API key not provided                        |
+ * | 400                | 1003        | Parameter 'q' not provided                  |
+ * | 400                | 1005        | API request url is invalid                  |
+ * | 400                | 1006        | No location found matching parameter 'q'    |
+ * | 401                | 2006        | API key provided is invalid                 |
+ * | 403                | 2007        | API key has exceeded calls per month quota  |
+ * | 403                | 2008        | API key has been disabled                   |
+ * | 400                | 9999        | Internal application error                  |
+ */

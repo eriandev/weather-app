@@ -11,7 +11,7 @@ const formattedDate = `${MONTHS_LIST[monthNumber]} ${dayNumber}, ${year}`
 
 describe('getConditionByCode function', () => {
   it('should return empty string', () => {
-    const result = getConditionByCode('1654137000')
+    const result = getConditionByCode(1654137000)
     expect(result).toEqual('')
   })
 
@@ -23,7 +23,8 @@ describe('getConditionByCode function', () => {
 
 describe('getFormattedDateByUnixTime function', () => {
   it('should return undefined', () => {
-    const result = getFormattedDateByUnixTime('1654137000')
+    // @ts-ignore
+    const result = getFormattedDateByUnixTime()
     expect(result).toBeUndefined()
   })
 
