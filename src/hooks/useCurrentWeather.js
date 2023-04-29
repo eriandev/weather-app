@@ -22,7 +22,8 @@ export default function useCurrentWeather () {
     update((store) => ({ ...store, loading: true }))
 
     try {
-      const { ok, data, error } = await getCurrentWeather(query)
+      const { body } = await getCurrentWeather(query)
+      const { ok, data, error } = body
 
       if (!ok) {
         update((store) => ({

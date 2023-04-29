@@ -12,9 +12,11 @@ export * from './weather.js'
 
 /**
  * @typedef {object} GetWeatherResponse
- * @prop {boolean} ok — Status check
- * @prop {WeatherData} data — Response data
- * @prop {ErrorResponse['error']=} error — Possible error response
+ * @prop {object} body
+ * @prop {boolean} body.ok — Status check
+ * @prop {WeatherData} body.data — Response data
+ * @prop {ErrorResponse['error']=} body.error — Possible error response
+ * @prop {number} status — HTTP response status code
  */
 
 /**
