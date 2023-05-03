@@ -13,7 +13,8 @@ module.exports = {
     },
 
     fontFamily: {
-      manrope: ['Manrope', ...fontFamily.sans]
+      manrope: ['Manrope', ...fontFamily.sans],
+      montserrat: ['Montserrat', ...fontFamily.sans]
     },
 
     colors: {
