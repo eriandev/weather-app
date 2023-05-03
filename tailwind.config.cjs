@@ -44,6 +44,11 @@ module.exports = {
       transparent: 'transparent'
     },
 
+    dropShadow: {
+      sun: '0 25px 25px rgb(251, 198,43,0.3)',
+      moon: '0 25px 25px rgb(255,255,255,0.2)'
+    },
+
     keyframes: {
       float: {
         '0%': { transform: 'translatey(0px)' },
