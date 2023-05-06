@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit'
 import { getWeatherData } from '@/services'
-import { AVAIBLE_ENDPOINTS } from '@/shared/constants'
+import { AVAIBLE_ENDPOINTS, BASE_URL } from '@/shared/constants'
 
 /**
  * @type {import('./$types').RequestHandler}
@@ -8,14 +8,27 @@ import { AVAIBLE_ENDPOINTS } from '@/shared/constants'
  */
 export async function GET (event) {
   const {
-    getClientAddress,
     params,
+    getClientAddress,
     url: { searchParams }
   } = event
-  const query = searchParams.get('q') ?? getClientAddress()
   const { endpoint = '' } = params
+  const query = searchParams.get('q') ?? getClientAddress()
 
-  if (!AVAIBLE_ENDPOINTS.includes(endpoint)) {
+  const isNotFromAppItself = !(event.request.url === BASE_URL)
+  const isNotAvailableEndpoint = !AVAIBLE_ENDPOINTS.includes(endpoint)
+
+  if (isNotFromAppItself) {
+    return json({
+      status: 418,
+      body: {
+        ok: false,
+        error: { message: `I'm a teapot` }
+      }
+    })
+  }
+
+  if (isNotAvailableEndpoint) {
     return json({
       status: 400,
       body: {
