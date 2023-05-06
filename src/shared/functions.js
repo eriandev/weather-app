@@ -22,3 +22,15 @@ export function getFormattedDateByUnixTime (unixTime) {
   const year = date.getFullYear()
   return `${MONTHS_LIST[monthNumber]} ${dayNumber}, ${year}`
 }
+
+/**
+ * @param {() => void} callBack
+ * @param {number=} delay
+ */
+export function debounce (callBack, delay = 1000) {
+  /** @type {NodeJS.Timeout | undefined} */
+  /* eslint-disable-next-line */
+  let timeoutRef
+  clearTimeout(timeoutRef)
+  timeoutRef = setTimeout(callBack, delay)
+}

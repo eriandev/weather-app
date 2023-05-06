@@ -6,6 +6,7 @@
   import Loading from '@/components/Loading.svelte'
   import Temperature from '@/components/Temperature.svelte'
 
+  import { debounce } from '@/shared/functions'
   import { useCurrentWeather, useDarkMode } from '@/hooks'
   import { currentWeather } from '@/hooks/useCurrentWeather'
   import { isLocationAllowed } from '@/hooks/useGeolocation'
@@ -14,7 +15,7 @@
   const { activatesDarkMode } = useDarkMode()
   const { updateCurrentStore, tryUpdateWithCoords } = useCurrentWeather()
 
-  const unsubscribe = currentWeather.subscribe((info) => mainProcess(info))
+  const unsubscribe = currentWeather.subscribe((info) => debounce(() => mainProcess(info), 2000))
 
   onMount(() => tryWithCoordsOr(updateCurrentStore))
   onDestroy(() => unsubscribe())
