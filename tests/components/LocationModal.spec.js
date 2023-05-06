@@ -17,7 +17,7 @@ describe('LocationModal component', () => {
   it('should be displayed', () => {
     openModal()
     const { getByText } = render(LocationModal)
-    expect(getByText(`I can't find you`)).toBeInTheDocument()
-    expect(getByText(`I'm here 🗺️`)).toBeInTheDocument()
+    expect(getByText("I can't find you")).toBeInTheDocument()
+    expect(getByText("I'm here 🗺️")).toBeInTheDocument()
   })
 })

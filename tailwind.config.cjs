@@ -3,25 +3,18 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,svelte}'],
-  safelist: [
-    'text-wind',
-    'text-rain',
-    'text-snow',
-    'text-sunny',
-    'text-clouds',
-    'text-clear',
-    'text-thunderstorm',
-  ],
+  safelist: ['text-wind', 'text-rain', 'text-snow', 'text-sunny', 'text-clouds', 'text-clear', 'text-thunderstorm'],
   darkMode: 'class',
   theme: {
     screens: {
       sm: '576px',
       md: '768px',
-      lg: '1024px',
+      lg: '1024px'
     },
 
     fontFamily: {
       manrope: ['Manrope', ...fontFamily.sans],
+      montserrat: ['Montserrat', ...fontFamily.sans]
     },
 
     colors: {
@@ -43,30 +36,35 @@ module.exports = {
         600: '#4B5563',
         700: '#374151',
         800: '#1F2937',
-        900: '#111827',
+        900: '#111827'
       },
 
       black: '#0F141E',
       white: '#FFFFFF',
-      transparent: 'transparent',
+      transparent: 'transparent'
+    },
+
+    dropShadow: {
+      sun: '0 25px 25px rgb(251, 198,43,0.3)',
+      moon: '0 25px 25px rgb(255,255,255,0.2)'
     },
 
     keyframes: {
       float: {
         '0%': { transform: 'translatey(0px)' },
         '50%': { transform: 'translatey(-20px)' },
-        '100%': { transform: 'translatey(0px)' },
+        '100%': { transform: 'translatey(0px)' }
       }
     },
 
     animation: {
-      float: 'float 6s ease-in-out infinite',
+      float: 'float 6s ease-in-out infinite'
     },
 
     extend: {
       borderRadius: {
-        '4xl': '42px',
+        '4xl': '42px'
       }
     }
-  },
+  }
 }

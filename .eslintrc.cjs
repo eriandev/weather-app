@@ -4,29 +4,34 @@ module.exports = {
   env: {
     node: true,
     es2022: true,
-    browser: true,
+    browser: true
   },
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 'latest',
-  },
-  extends: ['eslint:recommended'],
-  plugins: ['svelte3'],
-  rules: {
-    'no-unused-vars': [
-      'warn',{ destructuredArrayIgnorePattern: '^_$' }
-    ],
+    ecmaVersion: 'latest'
   },
   overrides: [
     {
-      files: ['**/*.svelte'],
-      processor: 'svelte3/svelte3',
+      files: ['*.js'],
+      extends: ['standard'],
+      rules: {
+        'prefer-promise-reject-errors': 'off'
+      }
     },
     {
-      files: ['**/*.spec.js'],
-      env: {
-        jest: true,
-      },
+      files: ['*.svelte'],
+      plugins: ['prettier'],
+      parser: 'svelte-eslint-parser',
+      extends: ['plugin:svelte/recommended'],
+      rules: {
+        'prettier/prettier': 'error'
+      }
     },
-  ],
+    {
+      files: ['*.spec.js'],
+      env: {
+        jest: true
+      }
+    }
+  ]
 }

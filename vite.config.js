@@ -1,23 +1,21 @@
 import url from 'node:url'
 import path from 'node:path'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import { sveltekit } from '@sveltejs/kit/vite'
 
 const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(url.fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  plugins: [
-    sveltekit({ hot: !process.env.VITEST }),
-  ],
+  plugins: [sveltekit()],
   resolve: {
     alias: {
       '@': path.resolve(dirname, './src'),
-      'test': path.resolve(dirname, './tests'),
-    },
+      test: path.resolve(dirname, './tests')
+    }
   },
   test: {
     globals: true,
-    environment: 'jsdom',
+    environment: 'happy-dom',
     setupFiles: './tests/setup.js'
-  },
+  }
 })

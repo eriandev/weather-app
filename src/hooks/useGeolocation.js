@@ -1,11 +1,11 @@
-import { browser } from '$app/env'
+import { browser } from '$app/environment'
 
 let isAvailable = false
-if(browser) isAvailable = window?.navigator && 'geolocation' in window.navigator
+if (browser) isAvailable = window?.navigator && 'geolocation' in window.navigator
 
 export const isLocationAllowed = async () => {
   try {
-    if(!browser) return false
+    if (!browser) return false
     const { state } = await window.navigator.permissions.query({ name: 'geolocation' })
     return state === 'granted'
   } catch (error) {
@@ -19,16 +19,16 @@ export const isLocationAllowed = async () => {
  * @param {boolean=} param.enableHighAccuracy
  * @param {number=} param.maximumAge
  * @param {number=} param.timeout
-*/
-export default function useGeolocation({ enableHighAccuracy = true, maximumAge = 30000, timeout = 3000 }) {
+ */
+export default function useGeolocation ({ enableHighAccuracy = true, maximumAge = 30000, timeout = 3000 }) {
   /**
    * @returns {Promise<GeolocationPosition>}
-  */
+   */
   const getCurrentPosition = async () => {
-    if(!isAvailable) {
+    if (!isAvailable) {
       return Promise.reject({
         code: 404,
-        message: 'Geolocation is not available',
+        message: 'Geolocation is not available'
       })
     }
 
