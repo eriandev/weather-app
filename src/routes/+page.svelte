@@ -6,10 +6,10 @@
   import Loading from '@/components/Loading.svelte'
   import Temperature from '@/components/Temperature.svelte'
 
-  import { debounce } from '@/shared/functions'
-  import { useCurrentWeather, useDarkMode } from '@/hooks'
-  import { currentWeather } from '@/hooks/useCurrentWeather'
-  import { isLocationAllowed } from '@/hooks/useGeolocation'
+  import { debounce } from '$lib/client/utils'
+  import { useCurrentWeather, useDarkMode } from '$lib/client/hooks'
+  import { currentWeather } from '$lib/client/hooks/useCurrentWeather'
+  import { isLocationAllowed } from '$lib/client/hooks/useGeolocation'
   import { openModal, closeModal } from '@/components/LocationModal.svelte'
 
   const { activatesDarkMode } = useDarkMode()
@@ -21,7 +21,7 @@
   onDestroy(() => unsubscribe())
 
   /**
-   * @param {import('@/shared/constants').CurrentWeatherStore} weatherInfo
+   * @param {import('$lib/client/consts').CurrentWeatherStore} weatherInfo
    */
   async function mainProcess(weatherInfo) {
     const isWeatherInfoFailed = weatherInfo.failed && !weatherInfo.loading

@@ -1,7 +1,7 @@
 <script context="module">
   import { writable } from 'svelte/store'
   import { fade, fly } from 'svelte/transition'
-  import { useCurrentWeather } from '@/hooks'
+  import { useCurrentWeather } from '$lib/client/hooks'
 
   const { set, subscribe } = writable(false)
 

@@ -1,6 +1,7 @@
-import { getWeatherData } from '@/services'
 import { response } from '$lib/server/utils'
-import { AVAIBLE_ENDPOINTS, BASE_URL } from '@/shared/constants'
+import { BASE_URL } from '$lib/client/consts'
+import { getWeatherData } from '$lib/server/services'
+import { AVAIBLE_ENDPOINTS } from '$lib/server/consts'
 
 /**
  * @type {import('./$types').RequestHandler}

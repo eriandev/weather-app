@@ -9,9 +9,14 @@ declare global {
   }
 
   interface ImportMetaEnv {
-    VITE_BASE_URL: string;
-    VITE_RAPIAPI_KEY: string;
-    VITE_RAPIAPI_HOST: string;
+    readonly RAPIAPI_KEY: string
+    readonly RAPIAPI_URL: string
+    readonly RAPIAPI_HOST: string
+    readonly PUBLIC_BASE_URL: string
+  }
+
+  interface ImportMeta {
+    readonly env: ImportMetaEnv
   }
 }
 

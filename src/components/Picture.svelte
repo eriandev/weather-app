@@ -1,5 +1,5 @@
 <script>
-  import { BASE_URL } from '@/shared/constants'
+  import { BASE_URL } from '$lib/client/consts'
 
   /** @type {string} */
   export let name
@@ -14,11 +14,11 @@
 
 {#if name}
   <picture class={shiny ? 'drop-shadow-sun filter dark:drop-shadow-moon' : null}>
-    <source type="image/webp" srcset="{BASE_URL}images/webp/{name}.webp" />
-    <source type="image/png" srcset="{BASE_URL}images/png/{name}.png" />
+    <source type="image/webp" srcset="{BASE_URL}/images/webp/{name}.webp" />
+    <source type="image/png" srcset="{BASE_URL}/images/png/{name}.png" />
     <img
       alt={name}
-      src="{BASE_URL}images/png/{name}.png"
+      src="{BASE_URL}/images/png/{name}.png"
       class={animated ? `animate-float ${customClass}` : customClass}
       {...$$restProps}
       on:click
