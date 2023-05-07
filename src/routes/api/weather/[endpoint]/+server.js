@@ -1,5 +1,5 @@
-import { json } from '@sveltejs/kit'
 import { getWeatherData } from '@/services'
+import { response } from '$lib/server/utils'
 import { AVAIBLE_ENDPOINTS, BASE_URL } from '@/shared/constants'
 
 /**
@@ -19,59 +19,18 @@ export async function GET (event) {
   const isNotAvailableEndpoint = !AVAIBLE_ENDPOINTS.includes(endpoint)
 
   if (isNotFromAppItself) {
-    return json({
-      status: 418,
-      body: {
-        ok: false,
-        error: { message: `I'm a teapot` }
-      }
-    })
+    return response(null, 418)
   }
 
   if (isNotAvailableEndpoint) {
-    return json({
-      status: 400,
-      body: {
-        ok: false,
-        /** @see https://www.weatherapi.com/docs/#intro-error-codes */
-        error: {
-          code: 1005,
-          message: 'API request url is invalid'
-        }
-      }
-    })
+    return response({ error: { message: 'API request url is invalid' } }, 400)
   }
 
   try {
     const data = await getWeatherData({ endpoint, query })
-
-    if (data?.error) {
-      return json({
-        status: 400,
-        body: {
-          ok: false,
-          error: data.error
-        }
-      })
-    }
-
-    return json({
-      status: 200,
-      body: {
-        ok: true,
-        data
-      }
-    })
+    if (data?.error) return response({ error: data.error }, 400)
+    return response({ data }, 200)
   } catch (error) {
-    return json({
-      status: 400,
-      body: {
-        ok: false,
-        error: {
-          code: 0,
-          message: 'Request failed'
-        }
-      }
-    })
+    return response({ error: { message: 'Request failed' } }, 410)
   }
 }

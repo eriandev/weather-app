@@ -30,7 +30,6 @@ export default function useCurrentWeather () {
           ...store,
           failed: true,
           loading: false,
-          errorCode: error?.code,
           errorMessage: error?.message
         }))
         return
@@ -57,7 +56,6 @@ export default function useCurrentWeather () {
         ...store,
         failed: true,
         loading: false,
-        errorCode: undefined,
         errorMessage: undefined
       }))
     }
