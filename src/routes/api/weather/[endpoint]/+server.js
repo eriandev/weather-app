@@ -7,16 +7,11 @@ import { AVAIBLE_ENDPOINTS } from '$lib/server/consts'
  * @type {import('./$types').RequestHandler}
  * @see https://kit.svelte.dev/docs/routing#endpoints
  */
-export async function GET (event) {
-  const {
-    params,
-    getClientAddress,
-    url: { searchParams }
-  } = event
+export async function GET ({ url, params, getClientAddress }) {
   const { endpoint = '' } = params
-  const query = searchParams.get('q') ?? getClientAddress()
+  const query = url.searchParams.get('q') ?? getClientAddress()
 
-  const isNotFromAppItself = !(event.request.url === BASE_URL)
+  const isNotFromAppItself = !(BASE_URL === url.origin)
   const isNotAvailableEndpoint = !AVAIBLE_ENDPOINTS.includes(endpoint)
 
   if (isNotFromAppItself) {
