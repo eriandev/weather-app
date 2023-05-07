@@ -3,6 +3,7 @@ import { render } from 'test/utils.js'
 import LocationModal, { openModal } from '@/components/LocationModal.svelte'
 
 vi.mock('$app/env', () => ({ browser: true }))
+vi.mock('$env/dynamic/public', () => ({ env: import.meta.env }))
 
 describe('LocationModal component', () => {
   afterEach(() => {

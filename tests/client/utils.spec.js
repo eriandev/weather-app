@@ -1,13 +1,15 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { MONTHS_LIST } from '$lib/client/consts'
-import { getConditionByCode, getFormattedDateByUnixTime } from '$lib/client/utils'
 import weatherCodes from '$lib/client/data/weather_codes.json'
+import { getConditionByCode, getFormattedDateByUnixTime } from '$lib/client/utils'
 
 const date = new Date(1654137000 * 1000)
 const monthNumber = date.getMonth()
 const dayNumber = date.getDate()
 const year = date.getFullYear()
 const formattedDate = `${MONTHS_LIST[monthNumber]} ${dayNumber}, ${year}`
+
+vi.mock('$env/dynamic/public', () => ({ env: import.meta.env }))
 
 describe('getConditionByCode function', () => {
   it('should return empty string', () => {

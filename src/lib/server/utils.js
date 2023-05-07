@@ -13,7 +13,7 @@ export function response (body, params) {
  * @param {number|ResponseInit} value
  * @returns {boolean}
  */
-function isResponseOk (value) {
+export function isResponseOk (value) {
   if (!value) return false
   if (typeof value === 'number') return value >= 200 && value <= 299
   return value?.status ? value.status >= 200 && value.status <= 299 : false

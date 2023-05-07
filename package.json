@@ -11,8 +11,8 @@
     "package": "svelte-kit package",
     "test": "vitest run --dir tests",
     "coverage": "vitest run --coverage",
-    "lint": "eslint --fix src/**/*.{js,svelte}",
     "check": "svelte-check --tsconfig ./jsconfig.json",
+    "lint": "eslint --fix {src,tests}/**/*.{js,svelte}",
     "fmt": "prettier --write src/**/*.{svelte,html,json}"
   },
   "devDependencies": {
