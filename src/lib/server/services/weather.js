@@ -2,7 +2,7 @@ import { API_REQUEST_OPTIONS, API_URL } from '$lib/server/consts'
 
 /**
  * Service for consuming the RapidAPI API
- * @type {import('$lib/client/services').GetWeatherData}
+ * @type {import('$lib/server/services').GetWeatherData}
  * @see https://rapidapi.com/weatherapi/api/weatherapi-com/
  */
 export async function getWeatherData ({ endpoint, query }) {
