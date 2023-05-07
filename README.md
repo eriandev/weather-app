@@ -75,8 +75,11 @@ npm install
 Create an `.env` file in the root project and provide the following values:
 
 ```bash
-VITE_RAPIAPI_HOST=
-VITE_RAPIAPI_KEY=
+PUBLIC_BASE_URL=
+RAPIAPI_URL=
+RAPIAPI_HOST=
+RAPIAPI_KEY=
+CACHE_TIME=
 ```
 
 *📢 You can obtain them using [RapidApi](https://rapidapi.com/weatherapi/api/weatherapi-com/)*
