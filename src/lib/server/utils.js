@@ -6,7 +6,7 @@
 export function response (body, params) {
   const ok = isResponseOk(params)
   const init = typeof params === 'number' ? { status: params } : params
-  return new Response(JSON.stringify({ ok, ...body }), init)
+  return new Response(JSON.stringify({ ok, data: body }), init)
 }
 
 /**
