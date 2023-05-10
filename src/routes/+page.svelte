@@ -27,7 +27,7 @@
     const isWeatherInfoFailed = weatherInfo.failed && !weatherInfo.loading
     if (isWeatherInfoFailed) tryWithCoordsOr(openModal)
     else closeModal()
-    activatesDarkMode(weatherInfo.isNight)
+    activatesDarkMode(!weatherInfo.isDay)
   }
 
   /**

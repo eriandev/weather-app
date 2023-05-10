@@ -2,7 +2,6 @@ import { writable } from 'svelte/store'
 import { useGeolocation } from '$lib/client/hooks'
 import { getCurrentWeather } from '$lib/client/services'
 import { DEFAULT_CURRENT_STORE } from '$lib/client/consts'
-import { getConditionByCode, getFormattedDateByUnixTime } from '$lib/client/utils'
 
 const { set, update, subscribe } = writable(DEFAULT_CURRENT_STORE)
 export const currentWeather = { subscribe }
@@ -22,7 +21,7 @@ export default function useCurrentWeather () {
     update((store) => ({ ...store, loading: true }))
 
     try {
-      const { ok, data, error } = await getCurrentWeather(query)
+      const { ok, current, location, error } = await getCurrentWeather(query)
 
       if (!ok) {
         update((store) => ({
@@ -34,20 +33,17 @@ export default function useCurrentWeather () {
         return
       }
 
-      const { current, location } = data
-      const isNight = !current.is_day
-      const condition = getConditionByCode(current.condition.code)
-
       set({
-        isNight,
         failed: false,
         loading: false,
-        tempCondition: condition,
+        isDay: current.isDay,
         locationName: location.name,
         tempText: current.condition.text,
-        tempDegrees: Math.floor(current.temp_c),
-        tempImage: `${isNight ? 'night' : 'day'}-${condition}`,
-        locationDate: getFormattedDateByUnixTime(location.localtime_epoch)
+        locationCountry: location.country,
+        locationDate: location.locationDate,
+        tempCondition: current.condition.time,
+        tempDegrees: Math.floor(current.temp.c),
+        tempImage: `${current.isDay ? 'day' : 'night'}-${current.condition.time}`
       })
     } catch (error) {
       console.error(error)
