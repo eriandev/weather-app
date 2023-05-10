@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { MONTHS_LIST } from '$lib/client/consts'
 import weatherCodes from '$lib/client/data/weather_codes.json'
-import { getConditionByCode, getFormattedDateByUnixTime } from '$lib/client/utils'
+import { getConditionByCode, getFormattedDateByUnixTime } from '$lib/server/utils'
 
 const date = new Date(1654137000 * 1000)
 const monthNumber = date.getMonth()
