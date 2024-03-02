@@ -16,17 +16,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Setup Node 📝
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v3
         with:
-          cache: 'npm'
-          node-version: '16'
+          version: 8
 
       - name: Install dependencies 🧱
-        run: npm ci
+        run: pnpm i
 
       - name: Lint 👕
-        run: npm run lint
+        run: pnpm lint
 
   test:
     needs: [lint]
@@ -37,14 +36,13 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Setup Node 📝
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v3
         with:
-          cache: 'npm'
-          node-version: '16'
+          version: 8
 
       - name: Install dependencies 🧱
-        run: npm ci
+        run: pnpm i
 
       - name: Unit tests 🧪
-        run: npm test
+        run: pnpm test
