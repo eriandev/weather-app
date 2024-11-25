@@ -18,7 +18,7 @@
   "devDependencies": {
     "@playwright/test": "1.38.0",
     "@sveltejs/adapter-vercel": "2.4.3",
-    "@sveltejs/kit": "1.25.0",
+    "@sveltejs/kit": "2.8.3",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/svelte": "3.2.2",
     "@testing-library/user-event": "14.5.2",
