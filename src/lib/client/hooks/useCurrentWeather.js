@@ -10,7 +10,7 @@ export const currentWeather = { subscribe }
  * Hook for the use of the current weather
  * @type {import('$lib/client/hooks').UseCurrentWeather<import('$lib/client/consts').CurrentWeatherStore>}
  */
-export default function useCurrentWeather () {
+export default function useCurrentWeather() {
   const { getCurrentPosition } = useGeolocation({})
 
   /**

@@ -6,7 +6,7 @@ import weatherCodes from '$lib/client/data/weather_codes.json'
  * @param {number|ResponseInit} params
  * @returns {Response}
  */
-export function response (body, params) {
+export function response(body, params) {
   const ok = isResponseOk(params)
   const init = typeof params === 'number' ? { status: params } : params
   return new Response(JSON.stringify({ ok, ...body }), init)
@@ -16,7 +16,7 @@ export function response (body, params) {
  * @param {number|ResponseInit} value
  * @returns {boolean}
  */
-export function isResponseOk (value) {
+export function isResponseOk(value) {
   if (!value) return false
   if (typeof value === 'number') return value >= 200 && value <= 299
   return value?.status ? value.status >= 200 && value.status <= 299 : false
@@ -26,7 +26,7 @@ export function isResponseOk (value) {
  * @param {number} code
  * @returns {string}
  */
-export function getConditionByCode (code) {
+export function getConditionByCode(code) {
   // @ts-ignore
   return weatherCodes?.[code] ?? ''
 }
@@ -35,7 +35,7 @@ export function getConditionByCode (code) {
  * @param {number} unixTime
  * @returns {string=}
  */
-export function getFormattedDateByUnixTime (unixTime) {
+export function getFormattedDateByUnixTime(unixTime) {
   if (!unixTime || typeof unixTime !== 'number') return undefined
   const date = new Date(unixTime * 1000)
   const monthNumber = date.getMonth()

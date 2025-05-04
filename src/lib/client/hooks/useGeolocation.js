@@ -20,7 +20,7 @@ export const isLocationAllowed = async () => {
  * @param {number=} param.maximumAge
  * @param {number=} param.timeout
  */
-export default function useGeolocation ({ enableHighAccuracy = true, maximumAge = 30000, timeout = 3000 }) {
+export default function useGeolocation({ enableHighAccuracy = true, maximumAge = 30000, timeout = 3000 }) {
   /**
    * @returns {Promise<GeolocationPosition>}
    */

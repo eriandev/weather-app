@@ -1,6 +1,6 @@
 import { onMount } from 'svelte'
 
-export default function useDarkMode () {
+export default function useDarkMode() {
   /** @type {HTMLHtmlElement | null} */
   let htmlRef = null
 

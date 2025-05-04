@@ -6,7 +6,7 @@ import { getConditionByCode, getFormattedDateByUnixTime, response } from '$lib/s
  * @type {import('./$types').RequestHandler}
  * @see https://kit.svelte.dev/docs/routing#endpoints
  */
-export async function GET ({ fetch, getClientAddress, url }) {
+export async function GET({ fetch, getClientAddress, url }) {
   const query = url.searchParams.get('q') ?? getClientAddress()
 
   const isNotFromAppItself = !(BASE_URL === url.origin)
@@ -63,7 +63,7 @@ export async function GET ({ fetch, getClientAddress, url }) {
  * @prop {string} name Location name
  * @prop {string} country Location country
  * @prop {string} locationDate Local date time
-*/
+ */
 
 /**
  * @typedef FormattedCurrent
@@ -76,7 +76,7 @@ export async function GET ({ fetch, getClientAddress, url }) {
  * @prop {object} condition
  * @prop {string} condition.text Weather condition text
  * @prop {string} condition.time Weather condition time
-*/
+ */
 
 /**
  * @typedef ErrorResponse
