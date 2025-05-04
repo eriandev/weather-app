@@ -19,7 +19,6 @@ describe('response function', () => {
 
 describe('isResponseOk function', () => {
   it('should return false when the value is falsy', () => {
-    // @ts-ignore
     const ok = isResponseOk()
     expect(ok).toEqual(false)
   })

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { render } from 'test/utils.js'
 import Loading from '@/components/Loading.svelte'
+import { render } from 'test/utils.js'
 
 describe('Loading component', () => {
   it('should be created', () => {

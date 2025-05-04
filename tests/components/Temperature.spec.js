@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { render } from 'test/utils.js'
 import Temperature from '@/components/Temperature.svelte'
+import { render } from 'test/utils.js'
 
 describe('Temperature component', () => {
   it('should be created', () => {
@@ -10,7 +10,7 @@ describe('Temperature component', () => {
 
   it('shows title and date inside when rendered', () => {
     const { getByText } = render(Temperature, { tempCondition: 'Sunny', tempDegrees: 26 })
-    expect(getByText('26°')).toBeInTheDocument()
-    expect(getByText('Sunny')).toBeInTheDocument()
+    expect(getByText('26°')).toBeDefined()
+    expect(getByText('Sunny')).toBeDefined()
   })
 })

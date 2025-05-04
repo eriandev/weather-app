@@ -89,16 +89,16 @@
   </svg>
 
   <div class="rain">
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
   </div>
 
   <div class="text">LOOKING OUTSIDE FOR YOU... ONE SECOND</div>

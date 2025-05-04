@@ -25,7 +25,6 @@ describe('getConditionByCode function', () => {
 
 describe('getFormattedDateByUnixTime function', () => {
   it('should return undefined', () => {
-    // @ts-ignore
     const result = getFormattedDateByUnixTime()
     expect(result).toBeUndefined()
   })
