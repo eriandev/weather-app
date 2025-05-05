@@ -1,13 +1,14 @@
 import url from 'node:url'
 import path from 'node:path'
 import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
 import { sveltekit } from '@sveltejs/kit/vite'
 import { svelteTesting } from '@testing-library/svelte/vite'
 
 const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(url.fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  plugins: [sveltekit()],
+  plugins: [tailwindcss(), sveltekit()],
   resolve: {
     alias: {
       '@': path.resolve(dirname, './src'),

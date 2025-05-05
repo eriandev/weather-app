@@ -12,7 +12,7 @@
 </script>
 
 {#if name}
-  <picture class={{ 'drop-shadow-sun filter dark:drop-shadow-moon': shiny }}>
+  <picture class={{ 'drop-shadow-sun dark:drop-shadow-moon filter': shiny }}>
     <source type="image/webp" srcset="{BASE_URL}/images/webp/{name}.webp" />
     <source type="image/png" srcset="{BASE_URL}/images/png/{name}.png" />
     <img

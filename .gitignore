@@ -22,7 +22,7 @@ speed-measure-plugin*.json
 !.vscode/launch.json
 !.vscode/settings.json
 !.vscode/extensions.json
-!.vscode/css_custom_data.json
+!.vscode/css_custom_tailwind.json
 *.code-workspace
 
 # Svelte-kit

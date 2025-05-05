@@ -1,0 +1,7 @@
+text-wind
+text-rain
+text-snow
+text-sunny
+text-clouds
+text-clear
+text-thunderstorm
