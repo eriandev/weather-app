@@ -10,6 +10,6 @@ export const API_REQUEST_OPTIONS = {
     'X-RapidAPI-Host': API_HOST ?? '',
     'X-RapidAPI-Key': API_KEY ?? ''
   }
-}
+} as const
 
-export const AVAIBLE_ENDPOINTS = ['current', 'forecast']
+export const AVAIBLE_ENDPOINTS = ['current', 'forecast'] as const

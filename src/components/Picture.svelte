@@ -1,27 +1,25 @@
-<script>
+<script lang="ts">
   import { BASE_URL } from '$lib/client/consts'
+  import type { HTMLImgAttributes } from 'svelte/elements'
 
-  /** @type {string} */
-  export let name
-  /** @type {boolean} */
-  export let shiny = false
-  /** @type {boolean} */
-  export let animated = false
-  /** @type {string} */
-  let customClass = ''
-  export { customClass as class }
+  interface PictureProps extends HTMLImgAttributes {
+    name: string
+    shiny?: boolean
+    animated?: boolean
+  }
+
+  const { name, animated = false, shiny = false, class: extraClass, ...restProps }: PictureProps = $props()
 </script>
 
 {#if name}
-  <picture class={shiny ? 'drop-shadow-sun filter dark:drop-shadow-moon' : null}>
+  <picture class={{ 'drop-shadow-sun filter dark:drop-shadow-moon': shiny }}>
     <source type="image/webp" srcset="{BASE_URL}/images/webp/{name}.webp" />
     <source type="image/png" srcset="{BASE_URL}/images/png/{name}.png" />
     <img
       alt={name}
       src="{BASE_URL}/images/png/{name}.png"
-      class={animated ? `animate-float ${customClass}` : customClass}
-      {...$$restProps}
-      on:click
+      class={[{ 'animate-float': animated }, extraClass]}
+      {...restProps}
     />
   </picture>
 {/if}

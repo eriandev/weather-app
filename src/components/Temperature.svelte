@@ -1,8 +1,10 @@
-<script>
-  /** @type {string} */
-  export let tempCondition
-  /** @type {number} */
-  export let tempDegrees
+<script lang="ts">
+  interface TemperatureProps {
+    tempCondition: string
+    tempDegrees: number
+  }
+
+  const { tempCondition, tempDegrees }: TemperatureProps = $props()
 </script>
 
 <section class="font-extrabold">

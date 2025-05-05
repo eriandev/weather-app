@@ -1,5 +1,5 @@
 <script>
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   import Picture from '@/components/Picture.svelte'
 </script>
 
@@ -9,7 +9,7 @@
   <Picture name="angry-cloud" />
   <h1 class="text-3xl font-extralight uppercase">You have been <strong class="font-semibold">struck</strong> by</h1>
   <article>
-    <h2 class="text-8xl font-black">{$page.status}</h2>
+    <h2 class="text-8xl font-black">{page.status}</h2>
     <div
       class="mx-auto inline-block w-max rotate-3 overflow-hidden bg-gray-800 px-4 py-2 text-transparent dark:bg-white"
     >

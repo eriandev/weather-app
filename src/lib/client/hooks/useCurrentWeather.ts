@@ -2,22 +2,18 @@ import { writable } from 'svelte/store'
 import { useGeolocation } from '$lib/client/hooks'
 import { getCurrentWeather } from '$lib/client/services'
 import { DEFAULT_CURRENT_STORE } from '$lib/client/consts'
+import type { UpdateStore, UseCurrentWeather } from '$lib/client/hooks/types'
 
 const { set, update, subscribe } = writable(DEFAULT_CURRENT_STORE)
 export const currentWeather = { subscribe }
 
-/**
- * Hook for the use of the current weather
- * @type {import('$lib/client/hooks').UseCurrentWeather<import('$lib/client/consts').CurrentWeatherStore>}
- */
-export default function useCurrentWeather() {
+export const useCurrentWeather: UseCurrentWeather = () => {
   const { getCurrentPosition } = useGeolocation({})
 
   /**
-   * @type {import('$lib/client/hooks').UpdateStore}
    * @see https://www.weatherapi.com/docs/#intro-request
    */
-  const updateCurrentStore = async (query) => {
+  const updateCurrentStore: UpdateStore = async (query) => {
     update((store) => ({ ...store, loading: true }))
 
     try {
