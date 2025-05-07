@@ -6,12 +6,13 @@
   import Loading from '@/components/Loading.svelte'
   import Temperature from '@/components/Temperature.svelte'
 
-  import { debounce } from '$lib/client/utils'
-  import { useCurrentWeather, useDarkMode } from '@/lib/client/hooks'
-  import { currentWeather } from '@/lib/client/hooks/useCurrentWeather'
-  import { isLocationAllowed } from '@/lib/client/hooks/useGeolocation'
+  import { debounce } from '@/shared/utils'
+  import { useDarkMode } from '$lib/hooks/useDarkMode'
+  import { currentWeather } from '$lib/hooks/useCurrentWeather'
+  import { isLocationAllowed } from '$lib/hooks/useGeolocation'
+  import { useCurrentWeather } from '$lib/hooks/useCurrentWeather'
   import { openModal, closeModal } from '@/components/LocationModal.svelte'
-  import type { CurrentWeatherStore } from '@/lib/client/types'
+  import type { CurrentWeatherStore } from '@/shared/types'
 
   const { activatesDarkMode } = useDarkMode()
   const { updateCurrentStore, tryUpdateWithCoords } = useCurrentWeather()

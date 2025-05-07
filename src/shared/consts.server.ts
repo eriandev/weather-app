@@ -4,6 +4,8 @@ export const API_HOST = env.RAPIAPI_HOST
 export const API_KEY = env.RAPIAPI_KEY
 export const API_URL = env.RAPIAPI_URL
 
+export const AVAIBLE_ENDPOINTS = ['current', 'forecast'] as const
+
 export const API_REQUEST_OPTIONS = {
   method: 'GET',
   headers: {
@@ -11,5 +13,3 @@ export const API_REQUEST_OPTIONS = {
     'X-RapidAPI-Key': API_KEY ?? ''
   }
 } as const
-
-export const AVAIBLE_ENDPOINTS = ['current', 'forecast'] as const

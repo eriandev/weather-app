@@ -1,7 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import { MONTHS_LIST } from '$lib/client/consts'
-import weatherCodes from '$lib/client/data/weather_codes.json'
-import { getConditionByCode, getFormattedDateByUnixTime } from '$lib/server/utils'
+import { MONTHS_LIST, WEATHER_CODES } from '@/shared/consts'
+import { getConditionByCode, getFormattedDateByUnixTime } from '@/shared/utils'
 
 const date = new Date(1654137000 * 1000)
 const monthNumber = date.getMonth()
@@ -19,7 +18,7 @@ describe('getConditionByCode function', () => {
 
   it('should give the expected result', () => {
     const result = getConditionByCode(1000)
-    expect(result).toEqual(weatherCodes[1000])
+    expect(result).toEqual(WEATHER_CODES[1000])
   })
 })
 

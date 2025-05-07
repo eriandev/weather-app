@@ -1,8 +1,8 @@
 import { writable } from 'svelte/store'
-import { useGeolocation } from '$lib/client/hooks'
-import { getCurrentWeather } from '$lib/client/services'
-import { DEFAULT_CURRENT_STORE } from '$lib/client/consts'
-import type { UpdateStore, UseCurrentWeather } from '$lib/client/hooks/types'
+import { getCurrentWeather } from '@/services/weather'
+import { DEFAULT_CURRENT_STORE } from '@/shared/consts'
+import { useGeolocation } from '$lib/hooks/useGeolocation'
+import type { UpdateStore, UseCurrentWeather } from '$lib/hooks/types'
 
 const { set, update, subscribe } = writable(DEFAULT_CURRENT_STORE)
 export const currentWeather = { subscribe }

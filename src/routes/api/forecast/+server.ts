@@ -1,6 +1,7 @@
-import { BASE_URL } from '$lib/client/consts'
-import { getForecastWeather } from '@/services/weather'
-import { getConditionByCode, getFormattedDateByUnixTime, response } from '$lib/server/utils'
+import { BASE_URL } from '@/shared/consts'
+import { response } from '@/shared/utils.server'
+import { getForecastWeather } from '@/services/weather.server'
+import { getConditionByCode, getFormattedDateByUnixTime } from '@/shared/utils'
 import type { RequestHandler } from './$types'
 
 /**

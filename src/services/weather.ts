@@ -1,16 +1,18 @@
-import { API_REQUEST_OPTIONS, API_URL } from '@/lib/server/consts'
-import type { CurrentResponse, ErrorResponse, ForecastResponse } from '@/routes/api/types'
+import { OWN_API_URL } from '@/shared/consts'
+import type { GetCurrentData, GetForecastData } from '@/services/types'
 
-export async function getCurrentWeather(query?: string): Promise<CurrentResponse & ErrorResponse> {
-  const urlRequest = new URL(`${API_URL}/current.json`)
+export async function getCurrentWeather(query?: string): Promise<GetCurrentData> {
+  const urlRequest = new URL(`${OWN_API_URL}/current`)
   if (query) urlRequest.searchParams.set('q', query)
-  const apiResponse = await fetch(urlRequest, API_REQUEST_OPTIONS)
-  return await apiResponse.json()
+
+  const response = await fetch(urlRequest)
+  return await response.json()
 }
 
-export async function getForecastWeather(query?: string): Promise<ForecastResponse & ErrorResponse> {
-  const urlRequest = new URL(`${API_URL}/forecast.json`)
+export async function getForecastWeather(query?: string): Promise<GetForecastData> {
+  const urlRequest = new URL(`${OWN_API_URL}/forecast`)
   if (query) urlRequest.searchParams.set('q', query)
-  const apiResponse = await fetch(urlRequest, API_REQUEST_OPTIONS)
-  return await apiResponse.json()
+
+  const response = await fetch(urlRequest)
+  return await response.json()
 }

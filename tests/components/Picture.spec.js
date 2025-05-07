@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 import Picture from '@/components/Picture.svelte'
-import { BASE_URL } from '$lib/client/consts'
+import { BASE_URL } from '@/shared/consts'
 import { render } from 'test/utils.js'
 
 vi.mock('$env/dynamic/public', () => ({ env: import.meta.env }))

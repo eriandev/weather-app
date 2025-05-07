@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BASE_URL } from '$lib/client/consts'
+  import { BASE_URL } from '@/shared/consts'
   import type { HTMLImgAttributes } from 'svelte/elements'
 
   interface PictureProps extends HTMLImgAttributes {
