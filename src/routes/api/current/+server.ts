@@ -1,44 +1,38 @@
 import { BASE_URL } from '$lib/client/consts'
-import { API_REQUEST_OPTIONS, API_URL } from '$lib/server/consts'
+import { getCurrentWeather } from '@/services/weather'
 import { getConditionByCode, getFormattedDateByUnixTime, response } from '$lib/server/utils'
-import type { CurrentResponse, ErrorResponse } from '@/routes/api/types'
 import type { RequestHandler } from './$types'
 
 /**
  * @see https://svelte.dev/docs/kit/routing#server
  */
-export const GET: RequestHandler = async ({ fetch, getClientAddress, url }) => {
+export const GET: RequestHandler = async ({ getClientAddress, url }) => {
   const query = url.searchParams.get('q') ?? getClientAddress()
+  const isNotFromAppItself = BASE_URL !== url.origin
 
-  const isNotFromAppItself = !(BASE_URL === url.origin)
-
-  if (isNotFromAppItself) {
-    return response(null, 418)
-  }
+  if (isNotFromAppItself) return response(null, 418)
 
   try {
-    const GET_WEATHER_DATA_URL = `${API_URL}/current.json?q=${query}` as const
-    const apiResponse = await fetch(GET_WEATHER_DATA_URL, API_REQUEST_OPTIONS)
-    const { current: cur, location: loc, error }: CurrentResponse & ErrorResponse = await apiResponse.json()
+    const { current: c, error, location: l } = await getCurrentWeather(query)
 
     if (error) return response({ error }, 400)
 
     const current = {
-      isDay: Boolean(cur.is_day),
+      isDay: Boolean(c.is_day),
       condition: {
-        text: cur.condition.text,
-        time: getConditionByCode(cur.condition.code)
+        text: c.condition.text,
+        time: getConditionByCode(c.condition.code)
       },
       temp: {
-        c: 12.0,
-        f: 53.6
+        c: c.temp_c,
+        f: c.temp_f
       }
     }
 
     const location = {
-      name: loc.name,
-      country: loc.country,
-      locationDate: getFormattedDateByUnixTime(loc.localtime_epoch)
+      name: l.name,
+      country: l.country,
+      locationDate: getFormattedDateByUnixTime(l.localtime_epoch)
     }
 
     return response({ current, location }, 200)
