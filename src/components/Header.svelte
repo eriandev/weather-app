@@ -1,8 +1,10 @@
-<script>
-  /** @type {string} */
-  export let title
-  /** @type {string=} */
-  export let date
+<script lang="ts">
+  interface HeaderProps {
+    title: string
+    date?: string
+  }
+
+  const { title, date }: HeaderProps = $props()
 </script>
 
 <header>

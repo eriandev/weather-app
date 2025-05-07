@@ -1,13 +1,51 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
+@source 'safelist.txt';
 
-@layer base {
-  :root {
-    font-size: 16px;
-  }
-  
-  body {
-    -webkit-tap-highlight-color: transparent;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-manrope: Manrope, sans-serif;
+  --font-montserrat: Montserrat, sans-serif;
+
+  --color-wind: #27B1FF;
+  --color-rain: #4E8DB1;
+  --color-snow: #8EC1DD;
+  --color-sunny: #FF8E27;
+  --color-clear: #FF8E27;
+  --color-clouds: #8EC1DD;
+  --color-thunderstorm: #BF8EDD;
+
+  --color-gray-50: #F9FAFB;
+  --color-gray-100: #F3F4F6;
+  --color-gray-200: #E5E7EB;
+  --color-gray-300: #D1D5DB;
+  --color-gray-400: #9CA3AF;
+  --color-gray-500: #6B7280;
+  --color-gray-600: #4B5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1F2937;
+  --color-gray-900: #111827;
+
+  --color-black: #0F141E;
+  --color-white: #FFFFFF;
+  --color-transparent: transparent;
+
+  --radius-4xl: 42px;
+
+  --drop-shadow-sun: 0 25px 25px rgb(251, 198,43,0.3);
+  --drop-shadow-moon: 0 25px 25px rgb(255,255,255,0.2);
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-20px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
   }
 }

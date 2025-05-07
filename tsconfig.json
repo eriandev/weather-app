@@ -1,13 +1,6 @@
 {
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "$lib":["src/lib"],
-      "test/*": ["tests/*"],
-      "$lib/*":["src/lib/*"]
-    },
     "strict": true,
     "allowJs": true,
     "checkJs": true,
@@ -15,9 +8,14 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+    "moduleResolution": "bundler",
+    "preserveValueImports": false,
+    "importsNotUsedAsValues": "remove",
     "forceConsistentCasingInFileNames": true
   }
-  // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias and https://kit.svelte.dev/docs/configuration#files
+  // Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
+  // except $lib which is handled by https://svelte.dev/docs/kit/configuration#files
   //
   // If you want to overwrite includes/excludes, make sure to copy over the relevant includes/excludes
   // from the referenced tsconfig.json - TypeScript does not merge them in

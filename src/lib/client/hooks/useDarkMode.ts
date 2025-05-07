@@ -1,17 +1,13 @@
 import { onMount } from 'svelte'
 
-export default function useDarkMode () {
-  /** @type {HTMLHtmlElement | null} */
-  let htmlRef = null
+export function useDarkMode() {
+  let htmlRef: HTMLHtmlElement | null = null
 
   onMount(() => {
     htmlRef = document.querySelector('html')
   })
 
-  /**
-   * @param {boolean} activator
-   */
-  const activatesDarkMode = (activator) => {
+  const activatesDarkMode = (activator: boolean) => {
     if (!htmlRef) return
     htmlRef.classList.toggle('dark', activator)
   }

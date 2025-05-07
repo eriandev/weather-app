@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount, onDestroy } from 'svelte'
 
   import Header from '@/components/Header.svelte'
@@ -7,10 +7,11 @@
   import Temperature from '@/components/Temperature.svelte'
 
   import { debounce } from '$lib/client/utils'
-  import { useCurrentWeather, useDarkMode } from '$lib/client/hooks'
-  import { currentWeather } from '$lib/client/hooks/useCurrentWeather'
-  import { isLocationAllowed } from '$lib/client/hooks/useGeolocation'
+  import { useCurrentWeather, useDarkMode } from '@/lib/client/hooks'
+  import { currentWeather } from '@/lib/client/hooks/useCurrentWeather'
+  import { isLocationAllowed } from '@/lib/client/hooks/useGeolocation'
   import { openModal, closeModal } from '@/components/LocationModal.svelte'
+  import type { CurrentWeatherStore } from '@/lib/client/types'
 
   const { activatesDarkMode } = useDarkMode()
   const { updateCurrentStore, tryUpdateWithCoords } = useCurrentWeather()
@@ -20,20 +21,14 @@
   onMount(() => tryWithCoordsOr(updateCurrentStore))
   onDestroy(() => unsubscribe())
 
-  /**
-   * @param {import('$lib/client/consts').CurrentWeatherStore} weatherInfo
-   */
-  async function mainProcess(weatherInfo) {
+  async function mainProcess(weatherInfo: CurrentWeatherStore) {
     const isWeatherInfoFailed = weatherInfo.failed && !weatherInfo.loading
     if (isWeatherInfoFailed) tryWithCoordsOr(openModal)
     else closeModal()
     activatesDarkMode(!weatherInfo.isDay)
   }
 
-  /**
-   * @param {(param?: string) => Promise<void> | void} elseFunction
-   */
-  async function tryWithCoordsOr(elseFunction) {
+  async function tryWithCoordsOr(elseFunction: (param?: string) => Promise<void> | void) {
     if (await isLocationAllowed()) tryUpdateWithCoords()
     else await elseFunction()
   }

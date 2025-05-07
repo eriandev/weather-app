@@ -1,7 +1,7 @@
 <div class="preloader">
   <svg
-    version="1.1"
     id="sun"
+    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     x="0px"
@@ -89,16 +89,16 @@
   </svg>
 
   <div class="rain">
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
-    <span class="drop" />
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
+    <span class="drop"></span>
   </div>
 
   <div class="text">LOOKING OUTSIDE FOR YOU... ONE SECOND</div>
