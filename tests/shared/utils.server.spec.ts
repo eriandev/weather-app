@@ -1,7 +1,5 @@
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { isResponseOk, response } from '@/shared/utils.server'
-
-vi.mock('$env/dynamic/public', () => ({ env: import.meta.env }))
 
 describe('response function', () => {
   it('should return the same status', () => {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import Temperature from '@/components/Temperature.svelte'
-import { render } from 'test/utils.js'
+import { render } from 'test/utils'
 
 describe('Temperature component', () => {
   it('should be created', () => {

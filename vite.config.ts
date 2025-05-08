@@ -24,8 +24,8 @@ export default defineConfig({
           name: 'client',
           clearMocks: true,
           environment: 'happy-dom',
-          include: ['tests/client/**/*.{test,spec}.{js,ts}'],
-          exclude: ['tests/server/**'],
+          include: ['tests/**/*.{client,svelte}.spec.ts'],
+          exclude: ['tests/**/*.server.spec.ts'],
           setupFiles: ['./vitest-setup-client.ts']
         }
       },
@@ -34,8 +34,8 @@ export default defineConfig({
         test: {
           name: 'server',
           environment: 'node',
-          include: ['tests/server/**/*.{test,spec}.{js,ts}'],
-          exclude: ['tests/client/**/*.svelte.{test,spec}.{js,ts}']
+          include: ['tests/**/*.server.spec.ts'],
+          exclude: ['tests/**/*.{client,svelte}.spec.ts']
         }
       }
     ]

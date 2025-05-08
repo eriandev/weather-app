@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { render } from 'test/utils.js'
 import Header from '@/components/Header.svelte'
+import { render } from 'test/utils'
 
 describe('Header component', () => {
   it('should be created', () => {

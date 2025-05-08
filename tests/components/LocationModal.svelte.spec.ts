@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { useGeolocation } from '$lib/hooks/useGeolocation.svelte'
 import GeolocationModal from '@/components/GeolocationModal.svelte'
-import { render } from 'test/utils.js'
+import { render } from 'test/utils'
 
 vi.mock('$app/env', () => ({ browser: true }))
 vi.mock('$env/dynamic/public', () => ({ env: import.meta.env }))
