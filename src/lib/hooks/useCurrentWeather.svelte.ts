@@ -1,19 +1,18 @@
 import { writable } from 'svelte/store'
 import { getCurrentWeather } from '@/services/weather'
 import { DEFAULT_CURRENT_STORE } from '@/shared/consts'
-import { useGeolocation } from '$lib/hooks/useGeolocation'
-import type { UpdateStore, UseCurrentWeather } from '$lib/hooks/types'
+import { useGeolocation } from '$lib/hooks/useGeolocation.svelte'
 
 const { set, update, subscribe } = writable(DEFAULT_CURRENT_STORE)
-export const currentWeather = { subscribe }
+const currentWeather = { subscribe }
 
-export const useCurrentWeather: UseCurrentWeather = () => {
-  const { getCurrentPosition } = useGeolocation({})
+export function useCurrentWeather() {
+  const geolocation = useGeolocation()
 
   /**
    * @see https://www.weatherapi.com/docs/#intro-request
    */
-  const updateCurrentStore: UpdateStore = async (query) => {
+  const updateCurrentStore = async (query?: string) => {
     update((store) => ({ ...store, loading: true }))
 
     try {
@@ -42,7 +41,7 @@ export const useCurrentWeather: UseCurrentWeather = () => {
         tempImage: `${current.isDay ? 'day' : 'night'}-${current.condition.time}`
       })
     } catch (error) {
-      console.error(error)
+      console.warn(error)
       update((store) => ({
         ...store,
         failed: true,
@@ -54,13 +53,20 @@ export const useCurrentWeather: UseCurrentWeather = () => {
 
   const tryUpdateWithCoords = async () => {
     try {
-      const { coords } = await getCurrentPosition()
+      const { coords } = await geolocation.getPosition()
       const position = `${coords.latitude},${coords.longitude}`
       await updateCurrentStore(position)
     } catch (error) {
-      console.error(error)
+      console.warn(error)
+      await updateCurrentStore()
+    } finally {
+      geolocation.closeModal()
     }
   }
 
-  return { updateCurrentStore, tryUpdateWithCoords }
+  return {
+    currentWeather,
+    updateCurrentStore,
+    tryUpdateWithCoords
+  }
 }

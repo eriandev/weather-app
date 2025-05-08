@@ -1,23 +1,26 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import LocationModal, { openModal } from '@/components/LocationModal.svelte'
+import { useGeolocation } from '$lib/hooks/useGeolocation.svelte'
+import GeolocationModal from '@/components/GeolocationModal.svelte'
 import { render } from 'test/utils.js'
 
 vi.mock('$app/env', () => ({ browser: true }))
 vi.mock('$env/dynamic/public', () => ({ env: import.meta.env }))
 
-describe('LocationModal component', () => {
+describe('GeolocationModal component', () => {
   afterEach(() => {
     vi.restoreAllMocks()
   })
 
   it('should be created', () => {
-    const component = render(LocationModal)
+    const component = render(GeolocationModal)
     expect(component).toBeTruthy()
   })
 
   it('should be displayed', () => {
-    openModal()
-    const { getByText } = render(LocationModal)
+    const geolocation = useGeolocation()
+
+    geolocation.openModal()
+    const { getByText } = render(GeolocationModal)
     expect(getByText("I can't find you")).toBeDefined()
     expect(getByText("I'm here 🗺️")).toBeDefined()
   })

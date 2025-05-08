@@ -1,29 +1,30 @@
-<script module lang="ts">
-  import { writable } from 'svelte/store'
+<script lang="ts">
   import { fade, fly } from 'svelte/transition'
-  import { useCurrentWeather } from '$lib/hooks/useCurrentWeather'
 
-  const { set, subscribe } = writable(false)
+  import { useGeolocation } from '$lib/hooks/useGeolocation.svelte'
+  import { useCurrentWeather } from '$lib/hooks/useCurrentWeather.svelte'
 
-  export const isOpen = { subscribe }
-  export const openModal = () => set(true)
-  export const closeModal = () => set(false)
-</script>
+  let isLoading = $state(false)
+  const geolocation = useGeolocation()
+  const currentWeather = useCurrentWeather()
 
-<script>
-  let loading = false
-  const { tryUpdateWithCoords } = useCurrentWeather()
+  interface GeolocationModalProps {
+    actionLabel: string
+    loadingLabel: string
+  }
+
+  const { actionLabel, loadingLabel }: GeolocationModalProps = $props()
 
   async function requestLocation() {
-    if (loading) return
+    if (isLoading) return
 
-    loading = !loading
-    await tryUpdateWithCoords()
-    loading = false
+    isLoading = true
+    await currentWeather.tryUpdateWithCoords()
+    isLoading = false
   }
 </script>
 
-{#if $isOpen}
+{#if geolocation.isModalOpen}
   <div
     transition:fade
     class="absolute top-0 left-0 z-50 grid h-full w-full place-items-center bg-[rgba(0,0,0,0.5)] px-12 md:rounded-4xl"
@@ -38,7 +39,7 @@
         class="bg-snow mx-auto rounded-lg px-4 py-2 tracking-wide text-white transition-transform duration-100 ease-in-out outline-none active:scale-[0.98] active:transform"
         onclick={requestLocation}
       >
-        {!loading ? `I'm here 🗺️` : `Seeking you... 🛰️`}
+        {isLoading ? loadingLabel : actionLabel}
       </button>
     </article>
   </div>
