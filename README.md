@@ -19,9 +19,6 @@
   <a target="_blank" href="https://vitest.dev/">
     <img title="Vitest" alt="Vitest badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Feriandev.github.io%2Fapi%2Fweather-app%2Fbadges%2Fvitest%2F" />
   </a>
-  <a target="_blank" href="https://playwright.dev/">
-    <img title="Playwright" alt="Playwright badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Feriandev.github.io%2Fapi%2Fweather-app%2Fbadges%2Fplaywright%2F" />
-  </a>
 </div>
 <div align="center">
   <a target="_blank" href="https://github.com/eriandev/weather-app/actions/workflows/testing.yaml">
@@ -46,26 +43,25 @@ The design is 100% the creation of [Mikołaj Niżnik](https://dribbble.com/mnizn
 
 ## 🦾 Technologies
 
-- [Svelte](https://svelte.dev/)
-- [SvelteKit](https://kit.svelte.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Playwright](https://playwright.dev/)
-- [Vitest](https://vitest.dev/)
-- [Vercel](https://vercel.com/)
+- [Svelte](https://svelte.dev)
+- [SvelteKit](https://svelte.dev/docs/kit/introduction)
+- [TailwindCSS](https://tailwindcss.com)
+- [Vitest](https://vitest.dev)
+- [Vercel](https://vercel.com)
 
 ## 🚀 Get Started
 
 You need to be using:
 
 - [Git](https://git-scm.com/downloads)
-- [Nodejs v16 or higher](https://nodejs.org/es/download/)
+- [Nodejs v20 or higher](https://nodejs.org/es/download)
 
 Clone the repository & install dependencies:
 
 ```bash
 git clone https://github.com/eriandev/weather-app.git
 cd weather-app
-npm install
+pnpm install
 ```
 
 *📢 If you're using [Visual Studio Code](https://code.visualstudio.com/), install the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).*
