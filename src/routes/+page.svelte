@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
+  import Image from '@/components/Image.svelte'
   import Header from '@/components/Header.svelte'
-  import Picture from '@/components/Picture.svelte'
   import Loading from '@/components/Loading.svelte'
   import Temperature from '@/components/Temperature.svelte'
   import { useGeolocation } from '$lib/hooks/useGeolocation.svelte'
@@ -14,15 +14,8 @@
   onMount(async () => {
     const { state } = await geolocation.getPermissionStatus()
 
-    if (state === 'denied') {
-      await updateCurrentStore()
-      return
-    }
-
-    if (state === 'prompt') {
-      geolocation.openModal()
-      return
-    }
+    if (state === 'denied') return await updateCurrentStore()
+    if (state === 'prompt') return geolocation.openModal()
 
     await tryUpdateWithCoords()
   })
@@ -33,7 +26,15 @@
 {:else}
   <main>
     <Header title={$currentWeather.locationName} date={$currentWeather.locationDate} />
-    <Picture shiny animated name={$currentWeather.tempImage} class="mx-auto mt-12 aspect-square w-[324px]" />
+    <Image
+      shiny
+      animated
+      width="320"
+      height="320"
+      alt={$currentWeather.tempImage}
+      name={$currentWeather.tempImage}
+      class="mx-auto mt-12 aspect-square w-80"
+    />
     <Temperature tempDegrees={$currentWeather.tempDegrees} tempCondition={$currentWeather.tempCondition} />
   </main>
 {/if}

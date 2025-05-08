@@ -1,8 +1,8 @@
-import { env } from '$env/dynamic/private'
+import { RAPIAPI_HOST, RAPIAPI_KEY, RAPIAPI_URL } from '$env/static/private'
 
-export const API_HOST = env.RAPIAPI_HOST
-export const API_KEY = env.RAPIAPI_KEY
-export const API_URL = env.RAPIAPI_URL
+export const API_HOST = RAPIAPI_HOST
+export const API_KEY = RAPIAPI_KEY
+export const API_URL = RAPIAPI_URL
 
 export const AVAIBLE_ENDPOINTS = ['current', 'forecast'] as const
 

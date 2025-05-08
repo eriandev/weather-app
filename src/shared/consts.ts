@@ -1,7 +1,7 @@
-import { env } from '$env/dynamic/public'
+import { PUBLIC_BASE_URL } from '$env/static/public'
 import type { CurrentWeatherStore } from '@/shared/types'
 
-export const BASE_URL = env.PUBLIC_BASE_URL ?? ''
+export const BASE_URL = PUBLIC_BASE_URL ?? ''
 export const OWN_API_URL = `${BASE_URL}/api` as const
 export const MONTHS_LIST = [
   'January',

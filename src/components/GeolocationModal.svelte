@@ -36,7 +36,7 @@
       <h2 class="text-4xl">I can't find you</h2>
       <p>I need you to give me a clue as to where you are</p>
       <button
-        class="bg-snow mx-auto rounded-lg px-4 py-2 tracking-wide text-white transition-transform duration-100 ease-in-out outline-none active:scale-[0.98] active:transform"
+        class="mx-auto rounded-lg bg-gray-600 px-4 py-2 tracking-wide text-white transition-transform duration-100 ease-in-out outline-none active:scale-[0.98] active:transform"
         onclick={requestLocation}
       >
         {isLoading ? loadingLabel : actionLabel}

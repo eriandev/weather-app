@@ -1,12 +1,12 @@
 <script>
   import { page } from '$app/state'
-  import Picture from '@/components/Picture.svelte'
+  import Image from '@/components/Image.svelte'
 </script>
 
 <section
   class="font-montserrat grid h-full grid-flow-row auto-rows-min content-center items-center gap-y-6 self-center text-center text-gray-800 dark:text-white"
 >
-  <Picture name="angry-cloud" />
+  <Image alt="Angry cloud" width="324" height="214" name="angry-cloud" />
   <h1 class="text-3xl font-extralight uppercase">You have been <strong class="font-semibold">struck</strong> by</h1>
   <article>
     <h2 class="text-8xl font-black">{page.status}</h2>
