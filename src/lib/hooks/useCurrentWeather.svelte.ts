@@ -1,12 +1,14 @@
 import { writable } from 'svelte/store'
 import { getCurrentWeather } from '@/services/weather'
 import { DEFAULT_CURRENT_STORE } from '@/shared/consts'
+import { useDarkMode } from '@/lib/hooks/useDarkMode.svelte'
 import { useGeolocation } from '$lib/hooks/useGeolocation.svelte'
 
 const { set, update, subscribe } = writable(DEFAULT_CURRENT_STORE)
 const currentWeather = { subscribe }
 
 export function useCurrentWeather() {
+  const darkMode = useDarkMode()
   const geolocation = useGeolocation()
 
   /**
@@ -19,14 +21,11 @@ export function useCurrentWeather() {
       const { ok, current, location, error } = await getCurrentWeather(query)
 
       if (!ok) {
-        update((store) => ({
-          ...store,
-          failed: true,
-          loading: false,
-          errorMessage: error?.message
-        }))
+        updateCurrentError(error?.message)
         return
       }
+
+      darkMode.toggle(!current.isDay)
 
       set({
         failed: false,
@@ -40,14 +39,8 @@ export function useCurrentWeather() {
         tempDegrees: Math.floor(current.temp.c),
         tempImage: `${current.isDay ? 'day' : 'night'}-${current.condition.time}`
       })
-    } catch (error) {
-      console.warn(error)
-      update((store) => ({
-        ...store,
-        failed: true,
-        loading: false,
-        errorMessage: undefined
-      }))
+    } catch {
+      updateCurrentError()
     }
   }
 
@@ -62,6 +55,17 @@ export function useCurrentWeather() {
     } finally {
       geolocation.closeModal()
     }
+  }
+
+  const updateCurrentError = (errorMessage?: string) => {
+    darkMode.toggle(true)
+    console.warn(errorMessage)
+    update((store) => ({
+      ...store,
+      failed: true,
+      errorMessage,
+      loading: false,
+    }))
   }
 
   return {
