@@ -38,6 +38,6 @@ export function useGeolocation({ enableHighAccuracy = true, maximumAge = 30000, 
     closeModal,
     getPermissionStatus,
     getPosition,
-    openModal
+    openModal,
   }
 }

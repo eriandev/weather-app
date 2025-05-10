@@ -15,7 +15,7 @@ export const MONTHS_LIST = [
   'September',
   'October',
   'November',
-  'December'
+  'December',
 ] as const
 
 export const DEFAULT_CURRENT_STORE: CurrentWeatherStore = {
@@ -28,7 +28,7 @@ export const DEFAULT_CURRENT_STORE: CurrentWeatherStore = {
   locationName: '',
   tempCondition: '',
   locationCountry: '',
-  locationDate: undefined
+  locationDate: undefined,
 }
 
 export const WEATHER_CODES: Record<number, string> = {
@@ -79,5 +79,5 @@ export const WEATHER_CODES: Record<number, string> = {
   1273: 'storm',
   1276: 'storm',
   1279: 'storm',
-  1282: 'storm'
+  1282: 'storm',
 }

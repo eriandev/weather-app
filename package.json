@@ -11,9 +11,9 @@
     "test": "vitest run --dir tests",
     "coverage": "vitest run --coverage",
     "prepare": "svelte-kit sync || echo ''",
-    "lint": "eslint --fix {src,tests}/**/*.{js,ts,svelte}",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "format": "prettier --write {src,tests}/**/*.{js,ts,svelte,html,json}"
+    "lint": "eslint --fix {src,tests}/**/*.{ts,svelte}",
+    "format": "prettier --write {src,tests}/**/*.{ts,svelte,html,json}",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
     "@eslint/compat": "1.2.9",

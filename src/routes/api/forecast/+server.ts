@@ -22,18 +22,18 @@ export const GET: RequestHandler = async ({ getClientAddress, url }) => {
       isDay: Boolean(c.is_day),
       condition: {
         text: c.condition.text,
-        time: getConditionByCode(c.condition.code)
+        time: getConditionByCode(c.condition.code),
       },
       temp: {
         c: c.temp_c,
-        f: c.temp_f
-      }
+        f: c.temp_f,
+      },
     }
 
     const location = {
       name: l.name,
       country: l.country,
-      locationDate: getFormattedDateByUnixTime(l.localtime_epoch)
+      locationDate: getFormattedDateByUnixTime(l.localtime_epoch),
     }
 
     return response({ current, location, forecast: forecast.forecastday }, 200)

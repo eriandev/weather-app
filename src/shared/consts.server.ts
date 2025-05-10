@@ -10,6 +10,6 @@ export const API_REQUEST_OPTIONS = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Host': API_HOST ?? '',
-    'X-RapidAPI-Key': API_KEY ?? ''
-  }
+    'X-RapidAPI-Key': API_KEY ?? '',
+  },
 } as const

@@ -11,9 +11,9 @@ const config = {
     adapter: vercel(),
     alias: {
       '@/*': 'src/*',
-      'test/*': 'tests/*'
-    }
-  }
+      'test/*': 'tests/*',
+    },
+  },
 }
 
 export default config

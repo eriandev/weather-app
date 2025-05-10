@@ -12,8 +12,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(dirname, './src'),
-      test: path.resolve(dirname, './tests')
-    }
+      test: path.resolve(dirname, './tests'),
+    },
   },
   test: {
     workspace: [
@@ -26,8 +26,8 @@ export default defineConfig({
           environment: 'happy-dom',
           include: ['tests/**/*.{client,svelte}.spec.ts'],
           exclude: ['tests/**/*.server.spec.ts'],
-          setupFiles: ['./vitest-setup-client.ts']
-        }
+          setupFiles: ['./vitest-setup-client.ts'],
+        },
       },
       {
         extends: './vite.config.ts',
@@ -35,9 +35,9 @@ export default defineConfig({
           name: 'server',
           environment: 'node',
           include: ['tests/**/*.server.spec.ts'],
-          exclude: ['tests/**/*.{client,svelte}.spec.ts']
-        }
-      }
-    ]
-  }
+          exclude: ['tests/**/*.{client,svelte}.spec.ts'],
+        },
+      },
+    ],
+  },
 })

@@ -37,7 +37,7 @@ export function useCurrentWeather() {
         locationDate: location.locationDate,
         tempCondition: current.condition.time,
         tempDegrees: Math.floor(current.temp.c),
-        tempImage: `${current.isDay ? 'day' : 'night'}-${current.condition.time}`
+        tempImage: `${current.isDay ? 'day' : 'night'}-${current.condition.time}`,
       })
     } catch {
       updateCurrentError()
@@ -71,6 +71,6 @@ export function useCurrentWeather() {
   return {
     currentWeather,
     updateCurrentStore,
-    tryUpdateWithCoords
+    tryUpdateWithCoords,
   }
 }
