@@ -1,5 +1,5 @@
 export function useDarkMode() {
-  let htmlRef = $state<HTMLHtmlElement | null>(null)
+  let htmlRef = $derived<HTMLHtmlElement | null>(null)
 
   $effect(() => {
     htmlRef = document.querySelector('html')
