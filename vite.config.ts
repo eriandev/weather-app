@@ -1,7 +1,7 @@
 import url from 'node:url'
 import path from 'node:path'
-import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vitest/config'
 import { sveltekit } from '@sveltejs/kit/vite'
 import { svelteTesting } from '@testing-library/svelte/vite'
 
