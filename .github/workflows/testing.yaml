@@ -12,20 +12,20 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
 
       - name: Use pnpm 🗜️
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v5
         with:
-          version: 10.10.0
+          version: 11
           run_install: false
 
       - name: Use Node.js 🐢
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
-          node-version: 22.14.0
+          node-version: 24.15.0
           cache: 'pnpm'
 
       - name: Install dependencies 🧱
@@ -39,20 +39,20 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
 
       - name: Use pnpm 🗜️
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v5
         with:
-          version: 10.10.0
+          version: 11
           run_install: false
 
       - name: Use Node.js 🐢
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 22.14.0
+          node-version: 24.15.0
           cache: 'pnpm'
 
       - name: Install dependencies 🧱

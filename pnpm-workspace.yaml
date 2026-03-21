@@ -1,0 +1,6 @@
+allowBuilds:
+  esbuild: false
+minimumReleaseAgeExclude:
+  - '@vitest/coverage-v8@4.1.7'
+  - '@vitest/pretty-format@4.1.7'
+  - '@vitest/utils@4.1.7'
