@@ -1,10 +1,15 @@
 import { MONTHS_LIST, WEATHER_CODES } from '@/shared/consts'
 
-export function debounce(callBack: () => void, delay = 1000) {
-  // eslint-disable-next-line prefer-const
-  let timeoutRef: NodeJS.Timeout | undefined
-  clearTimeout(timeoutRef)
-  timeoutRef = setTimeout(callBack, delay)
+export function debounce<T extends (...args: unknown[]) => void>(callback: T, delay = 1000) {
+  let timeoutRef: ReturnType<typeof setTimeout>
+
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeoutRef)
+
+    timeoutRef = setTimeout(() => {
+      callback(...args)
+    }, delay)
+  }
 }
 
 export function getConditionByCode(code: number): string {
