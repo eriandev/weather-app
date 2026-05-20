@@ -8,7 +8,7 @@
 </script>
 
 <section class="font-extrabold">
-  <h2 class="temp text-[144px] leading-[196px]">
+  <h2 class="temp text-[144px] leading-49">
     {tempDegrees}°
   </h2>
   <span class="text-{tempCondition} text-2xl capitalize">{tempCondition}</span>

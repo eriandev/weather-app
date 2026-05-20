@@ -10,7 +10,7 @@
 
   const { name, animated = false, shiny = false, lazy = false, class: extraClass, ...restProps }: ImageProps = $props()
   const shinyClass = 'drop-shadow-sun dark:drop-shadow-moon filter'
-  const loading = lazy ? 'lazy' : 'eager'
+  const loading = $derived(lazy ? 'lazy' : 'eager')
   const animatedClass = 'animate-float'
 </script>
 
